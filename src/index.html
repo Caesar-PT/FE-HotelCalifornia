@@ -6,8 +6,46 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- CSS
+================================================== -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/color.css">
 </head>
 <body>
   <app-root></app-root>
+  <!-- Scripts
+    ================================================== -->
+  <script type="text/javascript" src="assets/scripts/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/jquery-migrate-3.1.0.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/chosen.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/magnific-popup.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/rangeSlider.js"></script>
+  <script type="text/javascript" src="assets/scripts/sticky-kit.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/slick.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/masonry.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/mmenu.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/tooltips.min.js"></script>
+  <script type="text/javascript" src="assets/scripts/custom.js"></script>
+
+  <!-- Google Autocomplete -->
+  <script>
+    function initAutocomplete() {
+      var input = document.getElementById('autocomplete-input');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+
+      autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        if (!place.geometry) {
+          window.alert("No details available for input: '" + place.name + "'");
+          return;
+        }
+      });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
+
+
 </body>
 </html>
