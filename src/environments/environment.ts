@@ -4,8 +4,22 @@
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
   apiUrl: 'http://localhost:8080'
 
+=======
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  firebaseConfig: {
+    apiKey: 'AIzaSyCdp9yO3yrNI0S06DHANBr5pxLTh0kh57M',
+    authDomain: 'project-airbnb-a2eab.firebaseapp.com',
+    databaseURL: 'https://project-airbnb-a2eab-default-rtdb.firebaseio.com',
+    projectId: 'project-airbnb-a2eab',
+    storageBucket: 'project-airbnb-a2eab.appspot.com',
+    messagingSenderId: '582747033072',
+    appId: '1:582747033072:web:f444fe49b483458b966135',
+    measurementId: 'G-K785BM7SC3'
+  }
+>>>>>>> 3bac2a75493204228195351cfc662ae4b007cc7e
 };
 
 /*

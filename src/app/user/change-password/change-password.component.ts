@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
-import {User} from '../../interface/user';
 
 @Component({
   selector: 'app-change-password',

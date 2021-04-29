@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {House} from '../../interface/house';
+import {HouseType} from '../../interface/house-type';
+import {HouseStatus} from '../../interface/house-status';
+import {Village} from '../../interface/village';
+import {User} from '../../interface/user';
+import {Photo} from '../../interface/photo';
+import {HouseService} from '../../service/house.service';
 
 @Component({
   selector: 'app-create-house',
@@ -6,10 +13,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-house.component.css']
 })
 export class CreateHouseComponent implements OnInit {
+  house: House = {};
 
-  constructor() { }
+  constructor(private houseService: HouseService) { }
 
   ngOnInit(): void {
   }
+
+
 
 }
