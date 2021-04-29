@@ -6,6 +6,8 @@ import {LoginRegisterComponent} from './user/login-register/login-register.compo
 import {CreateHouseComponent} from './house/create-house/create-house.component';
 import {MyProfileComponent} from './user/my-profile/my-profile.component';
 import {ChangePasswordComponent} from './user/change-password/change-password.component';
+import {HouseDetailComponent} from './house/house-detail/house-detail.component';
+import {UploadFileComponent} from './upload-file/upload-file.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
   {
     path: 'change-password',
     component: ChangePasswordComponent
+  },
+  {
+    path: 'house-detail',
+    component: HouseDetailComponent
+  },
+  {
+    path: 'upload-file',
+    component: UploadFileComponent
   }
 ];
 
