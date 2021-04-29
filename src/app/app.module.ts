@@ -9,6 +9,9 @@ import { LoginRegisterComponent } from './user/login-register/login-register.com
 import { CreateHouseComponent } from './house/create-house/create-house.component';
 import { MyProfileComponent } from './user/my-profile/my-profile.component';
 import { ChangePasswordComponent } from './user/change-password/change-password.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,15 @@ import { ChangePasswordComponent } from './user/change-password/change-password.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
