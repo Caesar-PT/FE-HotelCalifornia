@@ -17,4 +17,5 @@ export interface House {
   appUser?: User;
   photo?: Photo[];
   avatar?: string;
+  address?: string;
 }
