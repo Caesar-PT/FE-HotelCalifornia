@@ -235,7 +235,7 @@
   <div class="container">
     <div class="row">
       <form (ngSubmit)="detailHouse(house.id)">
-        <div class="col-lg-8 col-md-7">
+<!--        <div class="col-lg-8 col-md-7">-->
           <div class="property-description">
 
             <h3 class="desc-headline">Details</h3>
@@ -254,11 +254,20 @@
             <h3 class="desc-headline">Comment</h3>
 
             <div class="listing-item" *ngFor="let c of listCmt">
-              {{c.appUser.fullName}}
+              {{c.appUser.fullName}}:
               <br>
-              {{c.comment}}
+              -{{c.comment}}
             </div>
 
+            <div>
+            <textarea type="text" name="name" class="form-control mb-2 mr-sm-2" style="border-radius: 30px"
+                      placeholder="Viết bình luận ..." [(ngModel)]="comment.comment"></textarea>
+            </div>
+<!--            <input name="name" type="text" [(ngModel)]="comment.comment"><br>-->
+
+            <div>
+              <button type="button"  class="btn btn-primary mb-2" (click)="createCommentHouse()">Đăng</button>
+            </div>
             <div class="layout-switcher hidden"><a href="#" class="list"><i class="fa fa-th-list"></i></a></div>
             <div class="listings-container list-layout">
 
@@ -281,13 +290,11 @@
 
                     <a href="#" class="details button border">Details</a>
                   </div>
-
-
                 </div>
               </div>
             </div>
           </div>
-        </div>
+<!--        </div>-->
         <!-- Property Description / End -->
 
 
@@ -413,7 +420,7 @@
             </div>
             <div class="row">
               <div class="col-md-12">
-                <div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+                <div class="copyrights">© 2021 Findeo. All Rights Reserved.</div>
               </div>
             </div>
           </div>
