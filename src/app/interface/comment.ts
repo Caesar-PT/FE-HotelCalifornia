@@ -1,9 +1,9 @@
 import {User} from './user';
 import {House} from './house';
 
-export interface Comment {
-  id?: number;
-  user?: User;
-  house?: House;
+export interface IComment {
+  id: number;
+  appUser: User;
+  house: House;
   comment: string;
 }

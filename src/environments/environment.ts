@@ -4,10 +4,8 @@
 
 export const environment = {
   production: false,
-<<<<<<< HEAD
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'http://localhost:8080',
 
-=======
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   firebaseConfig: {
     apiKey: 'AIzaSyCdp9yO3yrNI0S06DHANBr5pxLTh0kh57M',
@@ -19,7 +17,6 @@ export const environment = {
     appId: '1:582747033072:web:f444fe49b483458b966135',
     measurementId: 'G-K785BM7SC3'
   }
->>>>>>> 3bac2a75493204228195351cfc662ae4b007cc7e
 };
 
 /*

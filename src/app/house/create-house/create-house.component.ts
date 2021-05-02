@@ -13,8 +13,17 @@ import {HouseService} from '../../service/house.service';
   styleUrls: ['./create-house.component.css']
 })
 export class CreateHouseComponent implements OnInit {
-  house: House = {};
-
+  house: House = {
+    id: 0,
+    houseStatus: {
+      id: 0,
+      name: ''
+    },
+    houseType: {
+      id: 0,
+      name: ''
+    }
+  };
   constructor(private houseService: HouseService) { }
 
   ngOnInit(): void {

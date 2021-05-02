@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../interface/user';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
+import {User} from '../../interface/user';
 
 @Component({
   selector: 'app-my-profile',

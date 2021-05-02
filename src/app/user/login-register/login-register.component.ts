@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../interface/user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {JwtService} from '../../service/jwt.service';
 import {first} from 'rxjs/operators';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Role} from '../../interface/role';
+import {User} from '../../interface/user';
 
 @Component({
   selector: 'app-login-register',
