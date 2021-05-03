@@ -8,6 +8,7 @@ import {MyProfileComponent} from './user/my-profile/my-profile.component';
 import {ChangePasswordComponent} from './user/change-password/change-password.component';
 import {HouseDetailComponent} from './house/house-detail/house-detail.component';
 import {UploadFileComponent} from './upload-file/upload-file.component';
+import {OrderHouseComponent} from './house/order-house/order-house.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'upload-file',
     component: UploadFileComponent
+  },
+  {
+    path: '123',
+    component: OrderHouseComponent
   }
 ];
 

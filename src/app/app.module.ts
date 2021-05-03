@@ -20,9 +20,10 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { OrderHouseComponent } from './house/order-house/order-house.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ChangePasswordComponent,
     HouseDetailComponent,
     UploadFileComponent,
-    HeaderComponent
+    HeaderComponent,
+    OrderHouseComponent
   ],
     imports: [
         BrowserModule,
@@ -53,7 +55,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
         MatInputModule,
         MatDatepickerModule
     ],
-  providers: [],
+  providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }],
   bootstrap: [AppComponent]
 })
 export class AppModule {
