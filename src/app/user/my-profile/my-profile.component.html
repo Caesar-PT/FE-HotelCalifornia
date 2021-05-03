@@ -9,7 +9,9 @@
     <div class="csm-trigger"></div>
 
     <div class="csm-content">
-      <h4>Compare Properties <div class="csm-mobile-trigger"></div></h4>
+      <h4>Compare Properties
+        <div class="csm-mobile-trigger"></div>
+      </h4>
 
       <div class="csm-properties">
 
@@ -80,13 +82,15 @@
 
           <!-- Top bar -->
           <ul class="top-bar-menu">
-            <li><i class="fa fa-phone"></i> (123) 123-456 </li>
+            <li><i class="fa fa-phone"></i> (123) 123-456</li>
             <li><i class="fa fa-envelope"></i> <a href="#">office@example.com</a></li>
             <li>
               <div class="top-bar-dropdown">
                 <span>Dropdown Menu</span>
                 <ul class="options">
-                  <li><div class="arrow"></div></li>
+                  <li>
+                    <div class="arrow"></div>
+                  </li>
                   <li><a href="#">Nice First Link</a></li>
                   <li><a href="#">Second Link With Long Title</a></li>
                   <li><a href="#">Third Link</a></li>
@@ -277,7 +281,6 @@
   <!-- Header Container / End -->
 
 
-
   <!-- Titlebar
   ================================================== -->
   <div id="titlebar">
@@ -326,7 +329,7 @@
             </ul>
 
             <ul class="my-account-nav">
-              <li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Change Password</a></li>
+              <li><a href="/change-password"><i class="sl sl-icon-lock"></i> Change Password</a></li>
               <li><a href="#"><i class="sl sl-icon-power"></i> Log Out</a></li>
             </ul>
 
@@ -337,136 +340,132 @@
 
       <div class="col-md-8">
         <div class="row">
+          <form name="form" class="form-group" (ngSubmit)="f.form.valid && updateUser(user.id)" #f="ngForm" novalidate>
 
+            <div class="col-md-8 my-profile">
+              <h4 class="margin-top-0 margin-bottom-30">My Account</h4>
 
-          <div class="col-md-8 my-profile">
-            <h4 class="margin-top-0 margin-bottom-30">My Account</h4>
-
-            <label>Your Name</label>
-            <input value="Jennie Wilson" type="text">
-
-            <label>Your Title</label>
-            <input value="Agent In New York" type="text">
-
-            <label>Phone</label>
-            <input value="(123) 123-456" type="text">
-
-            <label>Email</label>
-            <input value="jennie@example.com" type="text">
-
-
-            <h4 class="margin-top-50 margin-bottom-25">About Me</h4>
-            <textarea name="about" id="about" cols="30" rows="10">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
-
-
-            <h4 class="margin-top-50 margin-bottom-0">Social</h4>
-
-            <label><i class="fa fa-twitter"></i> Twitter</label>
-            <input value="https://www.twitter.com/" type="text">
-
-            <label><i class="fa fa-facebook-square"></i> Facebook</label>
-            <input value="https://www.facebook.com/" type="text">
-
-            <label><i class="fa fa-google-plus"></i> Google+</label>
-            <input value="https://www.google.com/" type="text">
-
-            <label><i class="fa fa-linkedin"></i> Linkedin</label>
-            <input value="https://www.linkedin.com/" type="text">
-
-
-            <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
-          </div>
-
-          <div class="col-md-4">
-            <!-- Avatar -->
-            <div class="edit-profile-photo">
-              <img src="assets/images/agent-02.jpg" alt="">
-              <div class="change-photo-btn">
-                <div class="photoUpload">
-                  <span><i class="fa fa-upload"></i> Upload Photo</span>
-                  <input type="file" class="upload" />
-                </div>
+              <label>Your Name</label>
+              <div >
+                <input name="fullName" type="text" class="form-control" id="fullName" placeholder="Full Name *"
+                       [(ngModel)]="user.fullName" #fullName="ngModel" required="required">
               </div>
+
+              <div *ngIf="f.submitted && fullName.invalid">
+                <div *ngIf="fullName.errors?.required" class="text-danger">Vui lòng nhập tên đầy đủ</div>
+              </div>
+
+
+              <label>Address</label>
+              <div >
+                <input name="address" type="text" class="form-control" id="address" placeholder="Address *"
+                       [(ngModel)]="user.address" #address="ngModel" required="required">
+              </div>
+              <div *ngIf="f.submitted && address.invalid">
+                <div *ngIf="address.errors?.required" class="text-danger">Vui lòng nhập địa chỉ</div>
+              </div>
+
+              <label>Email</label>
+
+              <div >
+                <input name="email" type="text" class="form-control" id="email" placeholder="Email *"
+                       [(ngModel)]="user.email" #email="ngModel" required="required">
+              </div>
+              <div *ngIf="f.submitted && email.invalid">
+                <div *ngIf="email.errors?.required" class="text-danger">Vui lòng nhập email</div>
+              </div>
+              <label>PhoneNumber</label>
+              <input name="phoneNumber" type="text" class="form-control" id="phoneNumber"
+                     placeholder="Phone Number *"
+                     [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel" required="required" minlength="10"
+                     maxlength="11">
+
+            <div *ngIf="f.submitted && phoneNumber.invalid">
+              <div *ngIf="phoneNumber.errors?.required" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
+              <div *ngIf="phoneNumber.errors?.minlength" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
+              <div *ngIf="phoneNumber.errors?.maxlength" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
             </div>
-
-          </div>
-
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
-  <!-- Footer
-  ================================================== -->
-  <div class="margin-top-55"></div>
-
-  <div id="footer" class="sticky-footer">
-    <!-- Main -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5 col-sm-6">
-          <img class="footer-logo" src="images/logo.png" alt="">
-          <br><br>
-          <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-        </div>
-
-        <div class="col-md-4 col-sm-6 ">
-          <h4>Helpful Links</h4>
-          <ul class="footer-links">
-            <li><a href="#">Login</a></li>
-            <li><a href="#">Sign Up</a></li>
-            <li><a href="#">My Account</a></li>
-            <li><a href="#">Add Property</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-
-          <ul class="footer-links">
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Our Agents</a></li>
-            <li><a href="#">How It Works</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-          <div class="clearfix"></div>
-        </div>
-
-        <div class="col-md-3  col-sm-12">
-          <h4>Contact Us</h4>
-          <div class="text-widget">
-            <span>12345 Little Lonsdale St, Melbourne</span> <br>
-            Phone: <span>(123) 123-456 </span><br>
-            E-Mail:<span> <a href="#">office@example.com</a> </span><br>
-          </div>
-
-          <ul class="social-icons margin-top-20">
-            <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-            <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-            <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-            <li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
-          </ul>
-
+            <button class="btn btn-outline-success" type="submit">Cập nhật</button>
+            </div>
+          </form>
         </div>
 
       </div>
-
-      <!-- Copyright -->
-      <div class="row">
-        <div class="col-md-12">
-          <div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
-        </div>
-      </div>
-
     </div>
 
   </div>
-  <!-- Footer / End -->
-
-
-  <!-- Back To Top Button -->
-  <div id="backtotop"><a href="#"></a></div>
 </div>
+
+
+<!-- Footer
+================================================== -->
+<div class="margin-top-55"></div>
+
+<div id="footer" class="sticky-footer">
+  <!-- Main -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-sm-6">
+        <img class="footer-logo" src="images/logo.png" alt="">
+        <br><br>
+        <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia
+          tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 ">
+        <h4>Helpful Links</h4>
+        <ul class="footer-links">
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Sign Up</a></li>
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Add Property</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+
+        <ul class="footer-links">
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Our Agents</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="col-md-3  col-sm-12">
+        <h4>Contact Us</h4>
+        <div class="text-widget">
+          <span>12345 Little Lonsdale St, Melbourne</span> <br>
+          Phone: <span>(123) 123-456 </span><br>
+          E-Mail:<span> <a href="#">office@example.com</a> </span><br>
+        </div>
+
+        <ul class="social-icons margin-top-20">
+          <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+          <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+          <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+          <li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+        </ul>
+
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<!-- Footer / End -->
+
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
 <!-- Wrapper / End -->
