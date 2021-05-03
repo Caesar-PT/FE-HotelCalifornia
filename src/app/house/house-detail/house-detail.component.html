@@ -235,198 +235,169 @@
   <div class="container">
     <div class="row">
       <form (ngSubmit)="detailHouse(house.id)">
-<!--        <div class="col-lg-8 col-md-7">-->
-          <div class="property-description">
+<!--                <div class="col-lg-8 col-md-7">-->
+        <div
+          *ngIf="rateChecked">
+          <h3>Đánh giá ({{listRate.length}})</h3>
+          {{rateChecked}}/5
+          <span class="fa fa-star checked"></span>
+        </div>
 
-            <h3 class="desc-headline">Details</h3>
-            <ul class="property-features margin-top-0">
-              <li>Name: <span>{{house.name}}</span></li>
-              <li>BathRoom: <span>{{house.bathRoom}}</span></li>
-              <li>BedRoom: <span>{{house.bedRoom}}</span></li>
-              <li>Price: <span>{{house.priceByDay}}</span></li>
-              <li>Address: <span>{{house.village?.name}},{{house.village?.district?.name}}
-                ,{{house.village?.district?.province?.name}},</span></li>
+        <div class="property-description">
 
-            </ul>
-            <h3 class="desc-headline">Description</h3>
-            <h5>{{house.description}}</h5>
+          <h3 class="desc-headline">Details</h3>
+          <ul class="property-features margin-top-0">
+            <li>Name: <span>{{house.name}}</span></li>
+            <li>BathRoom: <span>{{house.bathRoom}}</span></li>
+            <li>BedRoom: <span>{{house.bedRoom}}</span></li>
+            <li>Price: <span>{{house.priceByDay}}</span></li>
+            <li>Address: <span>{{house.village?.name}},{{house.village?.district?.name}}
+              ,{{house.village?.district?.province?.name}},</span></li>
 
-            <h3 class="desc-headline">Comment</h3>
+          </ul>
+          <h3 class="desc-headline">Description</h3>
+          <h5>{{house.description}}</h5>
 
-            <div class="listing-item" *ngFor="let c of listCmt">
-              {{c.appUser.fullName}}:
-              <br>
-              -{{c.comment}}
-            </div>
 
-            <div>
+          <h3 class="desc-headline">Comment</h3>
+
+          <div class="listing-item" *ngFor="let c of listCmt">
+            {{c.appUser.fullName}}:
+            <br>
+            -{{c.comment}}
+          </div>
+          <div>
             <textarea type="text" name="name" class="form-control mb-2 mr-sm-2" style="border-radius: 30px"
                       placeholder="Viết bình luận ..." [(ngModel)]="comment.comment"></textarea>
+          </div>
+          <div>
+            <button type="button" class="btn btn-primary mb-2" (click)="createCommentHouse()">Đăng</button>
+          </div>
+
+
+          <div class="layout-switcher hidden"><a href="#" class="list"><i class="fa fa-th-list"></i></a></div>
+          <div class="listings-container list-layout">
+
+            <div class="listing-item">
+
             </div>
-<!--            <input name="name" type="text" [(ngModel)]="comment.comment"><br>-->
-
-            <div>
-              <button type="button"  class="btn btn-primary mb-2" (click)="createCommentHouse()">Đăng</button>
-            </div>
-            <div class="layout-switcher hidden"><a href="#" class="list"><i class="fa fa-th-list"></i></a></div>
-            <div class="listings-container list-layout">
-
-              <div class="listing-item">
-
-              </div>
-              <div class="listing-item">
-
-
-                <div class="listing-content">
-
-                  <div class="listing-title">
-                    <h4><a href="#">Selway Apartments</a></h4>
-                    <a
-                      href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom"
-                      class="listing-address popup-gmaps">
-                      <i class="fa fa-map-marker"></i>
-                      33 William St. Northbrook, IL
-                    </a>
-
-                    <a href="#" class="details button border">Details</a>
-                  </div>
-                </div>
+            <div class="listing-item">
+              <div class="listing-content">
               </div>
             </div>
           </div>
-<!--        </div>-->
-        <!-- Property Description / End -->
+        </div>
+      </form>
+
+      <h3 class="desc-headline">Rate</h3>
+
+      <div>
+        <input type="number" name="name"
+                [(ngModel)]="rate.star" min="1" max="5">
+      </div>
+<!--      <div>-->
+<!--        <button type="button" class="btn btn-primary mb-2" (click)="createRateHouse()">Chọn</button>-->
+<!--      </div>-->
+      <div>
+        <h5>Đánh giá của bạn về dịch vụ này: </h5>
+        <fieldset class="rating">
+          <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5"
+                                                                         (click)="createRate(5)"></label>
+          <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4"
+                                                                         (click)="createRate(4)"></label>
+          <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3"
+                                                                         (click)="createRate(3)"></label>
+          <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2"
+                                                                         (click)="createRate(2)"></label>
+          <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1"
+                                                                         (click)="createRate(1)"></label>
+        </fieldset>
+      </div>
+
+              </div>
 
 
-        <!-- Sidebar -->
-        <div class="col-lg-4 col-md-5">
-          <div class="sidebar sticky right">
+    </div>
+      <!-- Sidebar -->
+      <div class="col-lg-4 col-md-5">
+        <div class="sidebar sticky right">
 
-            <!-- Widget -->
-            <div class="widget margin-bottom-30">
-              <button class="widget-button with-tip" data-tip-content="Print"><i class="sl sl-icon-printer"></i>
-              </button>
-              <button class="widget-button with-tip" data-tip-content="Add to Bookmarks"><i class="fa fa-star-o"></i>
-              </button>
-              <button class="widget-button with-tip compare-widget-button" data-tip-content="Add to Compare"><i
-                class="icon-compare"></i></button>
+          <!-- Widget -->
+          <div class="widget margin-bottom-30">
+            <button class="widget-button with-tip" data-tip-content="Print"><i class="sl sl-icon-printer"></i>
+            </button>
+            <button class="widget-button with-tip" data-tip-content="Add to Bookmarks"><i class="fa fa-star-o"></i>
+            </button>
+            <button class="widget-button with-tip compare-widget-button" data-tip-content="Add to Compare"><i
+              class="icon-compare"></i></button>
+            <div class="clearfix"></div>
+          </div>
+          <!-- Widget / End -->
+
+
+
+          <div class="widget">
+
+
+          </div>
+        </div>
+      </div>
+      <div class="margin-top-55"></div>
+
+      <div id="footer" class="sticky-footer">
+        <!-- Main -->
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5 col-sm-6">
+              <img class="footer-logo" src="images/logo.png" alt="">
+              <br><br>
+              <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut
+                lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+            </div>
+
+            <div class="col-md-4 col-sm-6 ">
+              <h4>Helpful Links</h4>
+              <ul class="footer-links">
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">Add Property</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
+
+              <ul class="footer-links">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Our Agents</a></li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
               <div class="clearfix"></div>
             </div>
-            <!-- Widget / End -->
-
-
-            <!-- Booking Widget -->
-            <div class="widget">
-              <!-- Book Now -->
-              <div id="booking-widget-anchor" class="boxed-widget booking-widget margin-top-35">
-                <h3><i class="fa fa-calendar-check-o "></i> Booking</h3>
-                <div class="row with-forms  margin-top-0">
-                  <div class="col-lg-12">
-                    <input type="text" id="date-picker" placeholder="Date" readonly="readonly">
-                  </div>
-
-                  <!-- Panel Dropdown -->
-                  <div class="col-lg-12">
-                    <div class="panel-dropdown">
-                      <a href="#">Guests <span class="qtyTotal" name="qtyTotal">1</span></a>
-                      <div class="panel-dropdown-content">
-
-                        <!-- Quantity Buttons -->
-                        <div class="qtyButtons">
-                          <div class="qtyTitle">Adults</div>
-                          <input type="text" name="qtyInput" value="1">
-                        </div>
-
-                        <div class="qtyButtons">
-                          <div class="qtyTitle">Childrens</div>
-                          <input type="text" name="qtyInput" value="0">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <a href="#" class="button book-now fullwidth margin-top-5">Request To Book</a>
+            <div class="col-md-3  col-sm-12">
+              <h4>Contact Us</h4>
+              <div class="text-widget">
+                <span>12345 Little Lonsdale St, Melbourne</span> <br>
+                Phone: <span>(123) 123-456 </span><br>
+                E-Mail:<span> <a href="#">office@example.com</a> </span><br>
               </div>
+              <ul class="social-icons margin-top-20">
+                <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+                <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+                <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+                <li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+              </ul>
             </div>
-            <div class="widget">
+          </div>
 
-              <!-- Agent Widget -->
-              <div class="agent-widget">
-                <div class="agent-title">
-                  <div class="agent-photo"><img src="assets/images/agent-avatar.jpg" alt=""/></div>
-                  <div class="agent-details">
-                    <h4><a href="#">Jennie Wilson</a></h4>
-                    <span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-
-                <input type="text" placeholder="Your Email"
-                       pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$">
-                <input type="text" placeholder="Your Phone">
-                <textarea>I'm interested in this property [ID 123456] and I'd like to know more details.</textarea>
-                <button class="button fullwidth margin-top-5">Send Message</button>
-              </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyrights">© 2021 Findeo. All Rights Reserved.</div>
             </div>
           </div>
         </div>
-        <div class="margin-top-55"></div>
-
-        <div id="footer" class="sticky-footer">
-          <!-- Main -->
-          <div class="container">
-            <div class="row">
-              <div class="col-md-5 col-sm-6">
-                <img class="footer-logo" src="images/logo.png" alt="">
-                <br><br>
-                <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut
-                  lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-              </div>
-
-              <div class="col-md-4 col-sm-6 ">
-                <h4>Helpful Links</h4>
-                <ul class="footer-links">
-                  <li><a href="#">Login</a></li>
-                  <li><a href="#">Sign Up</a></li>
-                  <li><a href="#">My Account</a></li>
-                  <li><a href="#">Add Property</a></li>
-                  <li><a href="#">Pricing</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                </ul>
-
-                <ul class="footer-links">
-                  <li><a href="#">FAQ</a></li>
-                  <li><a href="#">Blog</a></li>
-                  <li><a href="#">Our Agents</a></li>
-                  <li><a href="#">How It Works</a></li>
-                  <li><a href="#">Contact</a></li>
-                </ul>
-                <div class="clearfix"></div>
-              </div>
-              <div class="col-md-3  col-sm-12">
-                <h4>Contact Us</h4>
-                <div class="text-widget">
-                  <span>12345 Little Lonsdale St, Melbourne</span> <br>
-                  Phone: <span>(123) 123-456 </span><br>
-                  E-Mail:<span> <a href="#">office@example.com</a> </span><br>
-                </div>
-                <ul class="social-icons margin-top-20">
-                  <li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-                  <li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-                  <li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-                  <li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="copyrights">© 2021 Findeo. All Rights Reserved.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="backtotop"><a href="#"></a></div>
-      </form>
+      </div>
+      <div id="backtotop"><a href="#"></a></div>
     </div>
-  </div>
-</div>
+
