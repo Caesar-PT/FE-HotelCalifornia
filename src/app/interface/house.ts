@@ -6,16 +6,15 @@ import {User} from './user';
 
 export interface House {
   id?: number;
-  name?: string;
-  bedRoom?: number;
-  bathRoom?: number;
-  description?: string;
-  priceByDay?: number;
-  houseType?: HouseType;
-  houseStatus?: HouseStatus;
-  village?: Village;
+  name: string;
+  bedRoom: number;
+  bathRoom: number;
+  description: string;
+  priceByDay: number;
+  houseType: HouseType;
+  houseStatus: HouseStatus;
+  village: Village;
   appUser?: User;
-  photo?: Photo[];
-  avatar?: string;
-  address?: string;
+  avatar: string;
+  address: string;
 }

@@ -35,7 +35,7 @@ const routes: Routes = [
     component: ChangePasswordComponent
   },
   {
-    path: 'house-detail',
+    path: 'house-detail/:id',
     component: HouseDetailComponent
   },
   {
