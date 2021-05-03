@@ -485,7 +485,7 @@
                 </div>
 
                 <div class="listing-img-content">
-                  <span class="listing-price">{{h.priceByDay}} <i>{{h.village.name}} + {{h.village.district.name}} + {{h.village.district.province.name}}</i></span>
+                  <span class="listing-price">{{h.priceByDay}} <i>{{h.village?.name}} + {{h.village?.district?.name}} + {{h.village?.district?.province?.name}}</i></span>
                   <span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
                   <span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
                 </div>
@@ -509,7 +509,7 @@
                 </div>
 
                 <ul class="listing-features">
-                  <li>Type <span>{{h.houseType.name}}</span></li>
+                  <li>Type <span>{{h.houseType?.name}}</span></li>
                   <li>Bedrooms <span>{{h.bedRoom}}</span></li>
                   <li>Bathrooms <span>{{h.bathRoom}}</span></li>
                 </ul>

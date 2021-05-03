@@ -10,6 +10,7 @@ import {House} from '../../interface/house';
 export class HouseListComponent implements OnInit {
 
   listHouse: House[] = [];
+  listPhoto: string[] = [];
 
   constructor(private houseService: HouseService) {
     this.getAllHouse();

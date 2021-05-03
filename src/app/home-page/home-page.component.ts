@@ -18,11 +18,10 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getAllHouse(): House[] {
+  getAllHouse(){
     this.houseService.getAllHouse().subscribe(houses => {
       this.listHouse = houses;
     });
-    return this.listHouse;
   }
 
 }
