@@ -3,7 +3,7 @@ import {House} from './house';
 
 export interface IComment {
   id: number;
-  appUser: User;
-  house: House;
+  appUser?: User;
+  house?: House;
   comment: string;
 }

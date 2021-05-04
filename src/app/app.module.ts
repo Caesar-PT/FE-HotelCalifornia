@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { RateandcommentComponent } from './house/rateandcomment/rateandcomment.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ChangePasswordComponent,
     HouseDetailComponent,
     UploadFileComponent,
-    HeaderComponent
+    HeaderComponent,
+    RateandcommentComponent
   ],
     imports: [
         BrowserModule,

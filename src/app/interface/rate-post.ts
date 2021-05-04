@@ -1,5 +1,5 @@
 export interface RatePost {
   id: number;
-  houseId: number;
+  houseId?: number;
   star: number | undefined;
 }
