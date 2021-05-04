@@ -11,13 +11,7 @@ const URL_BACKEND = `${environment.apiUrl}`;
 })
 export class UserService {
   createUser(user: User): Observable<User> {
-    const token = localStorage.getItem('ACCESS_TOKEN');
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    });
-    return this.httpClient.post<User>(URL_BACKEND + '/user/signup', user,{headers});
+    return this.httpClient.post<User>(URL_BACKEND + '/user/signup', user);
   }
 
   getAllUser(): Observable<User[]> {
@@ -53,13 +47,8 @@ export class UserService {
 
 
   getUserById(id: number): Observable<User> {
-    const token = localStorage.getItem('ACCESS_TOKEN');
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    });
-    return this.httpClient.get<User>(URL_BACKEND + '/user/' + `${id}`,{headers});
+
+    return this.httpClient.get<User>(URL_BACKEND + '/user/' + `${id}`);
   }
 
 

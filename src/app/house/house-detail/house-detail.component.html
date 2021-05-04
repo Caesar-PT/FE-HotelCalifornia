@@ -234,7 +234,7 @@
 
   <div class="container">
     <div class="row">
-      <form (ngSubmit)="detailHouse(house.id)">
+<!--      <form (ngSubmit)="detailHouse(house.id)">-->
 <!--                <div class="col-lg-8 col-md-7">-->
         <div
           *ngIf="rateChecked">
@@ -287,7 +287,7 @@
             </div>
           </div>
         </div>
-      </form>
+<!--      </form>-->
 
       <h3 class="desc-headline">Rate</h3>
 
@@ -298,21 +298,7 @@
       <div>
         <button type="button" class="btn btn-primary mb-2" (click)="createRateHouse()">Chọn</button>
       </div>
-      <div>
-        <h5>Đánh giá của bạn về dịch vụ này: </h5>
-        <fieldset class="rating">
-          <input type="radio" id="star5" name="rating" value="5"/><label class="full" for="star5"
-                                                                         (click)="createRate(5)"></label>
-          <input type="radio" id="star4" name="rating" value="4"/><label class="full" for="star4"
-                                                                         (click)="createRate(4)"></label>
-          <input type="radio" id="star3" name="rating" value="3"/><label class="full" for="star3"
-                                                                         (click)="createRate(3)"></label>
-          <input type="radio" id="star2" name="rating" value="2"/><label class="full" for="star2"
-                                                                         (click)="createRate(2)"></label>
-          <input type="radio" id="star1" name="rating" value="1"/><label class="full" for="star1"
-                                                                         (click)="createRate(1)"></label>
-        </fieldset>
-      </div>
+
 
               </div>
 

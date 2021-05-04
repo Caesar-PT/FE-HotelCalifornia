@@ -14,13 +14,8 @@ export class HouseService {
   }
 
   getAllHouse(): Observable<House[]> {
-    const token = localStorage.getItem('ACCESS_TOKEN');
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    });
-    return this.httpClient.get<House[]>('http://localhost:8080/house',{headers});
+
+    return this.httpClient.get<House[]>('http://localhost:8080/house');
   }
 
   createHouse(house: House): Observable<House> {
@@ -44,13 +39,8 @@ export class HouseService {
   }
 
   getHouseById(id: number): Observable<House> {
-    const token = localStorage.getItem('ACCESS_TOKEN');
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    });
-    return this.httpClient.get<House>('http://localhost:8080/house/' + `${id}`,{headers});
+
+    return this.httpClient.get<House>('http://localhost:8080/house/' + `${id}`);
   }
 
   getCommentsByHouseId(id: number): Observable<IComment[]> {

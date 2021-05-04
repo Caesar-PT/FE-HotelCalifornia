@@ -288,16 +288,4 @@ export class HouseDetailComponent implements OnInit {
     });
   }
 
-  createRate(i: number) {
-    console.log(i);
-    this.rate.house = this.house;
-    this.rate.star = i;
-    this.houseService.createRate(this.rate).subscribe(next => {
-        this.houseService.getRateByHouseId(this.id).subscribe(data => {
-          this.listRate = data;
-          this.rateChecked = this.houseService.checkRates(this.listRate);
-        });
-      }
-    );
-  }
 }

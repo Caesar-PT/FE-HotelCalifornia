@@ -380,12 +380,12 @@
                      [(ngModel)]="user.phoneNumber" #phoneNumber="ngModel" required="required" minlength="10"
                      maxlength="11">
 
-            <div *ngIf="f.submitted && phoneNumber.invalid">
-              <div *ngIf="phoneNumber.errors?.required" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
-              <div *ngIf="phoneNumber.errors?.minlength" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
-              <div *ngIf="phoneNumber.errors?.maxlength" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
-            </div>
-            <button class="btn btn-outline-success" type="submit">Cập nhật</button>
+              <div *ngIf="f.submitted && phoneNumber.invalid">
+                <div *ngIf="phoneNumber.errors?.required" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
+                <div *ngIf="phoneNumber.errors?.minlength" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
+                <div *ngIf="phoneNumber.errors?.maxlength" class="text-danger">Vui lòng nhập đúng số điện thoại</div>
+              </div>
+              <button class="btn btn-outline-success" type="submit">Cập nhật</button>
             </div>
           </form>
         </div>

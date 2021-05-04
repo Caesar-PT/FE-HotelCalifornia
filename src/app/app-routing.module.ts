@@ -30,6 +30,7 @@ const routes: Routes = [
     path: 'my-profile',
     component: MyProfileComponent
   },
+
   {
     path: 'change-password',
     component: ChangePasswordComponent
