@@ -5,16 +5,16 @@ import {Photo} from './photo';
 import {User} from './user';
 
 export interface House {
-  id: number;
-  name?: string;
-  bedRoom?: number;
-  bathRoom?: number;
-  description?: string;
-  priceByDay?: number;
+  id?: number;
+  name: string;
+  bedRoom: number;
+  bathRoom: number;
+  description: string;
+  priceByDay: number;
   houseType: HouseType;
   houseStatus: HouseStatus;
-  village?: Village;
+  village: Village;
   appUser?: User;
-  photo?: Photo[];
-  avatar?: string;
+  avatar: string;
+  address: string;
 }

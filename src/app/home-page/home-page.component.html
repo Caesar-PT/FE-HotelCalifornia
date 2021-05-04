@@ -250,7 +250,7 @@
         <div class="right-side">
           <!-- Header Widget -->
           <div class="header-widget">
-            <a href="/login-register" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+            <a href="login-register.html" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
             <a href="submit-property.html" class="button border">Submit Property</a>
           </div>
           <!-- Header Widget / End -->
@@ -500,17 +500,16 @@
 
               <div class="listing-content">
 
-                <div >
-                  <h4>  <a [routerLink]="'house-detail/'+h.id">{{h.name}}</a>
-                  </h4>
-                  <a href="https://www.google.com/maps/@18.911398,105.2970162,13.26z?hl=vi-VN" class="listing-address popup-gmaps">
-                    <i class="fa fa -map-marker"></i>
-                    DongSon,DoLuong,NgheAn
+                <div class="listing-title">
+                  <h4><a routerLink="house-detail/{{h.id}}">{{h.name}}</a></h4>
+                  <a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
+                    <i class="fa fa-map-marker"></i>
+                    9364 School St. Lynchburg, NY
                   </a>
                 </div>
 
                 <ul class="listing-features">
-                  <li>Type <span>{{h?.houseType?.name}}</span></li>
+                  <li>Type <span>{{h.houseType?.name}}</span></li>
                   <li>Bedrooms <span>{{h?.bedRoom}}</span></li>
                   <li>Bathrooms <span>{{h?.bathRoom}}</span></li>
                 </ul>
@@ -848,3 +847,4 @@
   <div id="backtotop"><a href="#"></a></div>
 </div>
 <!-- Wrapper / End -->
+
