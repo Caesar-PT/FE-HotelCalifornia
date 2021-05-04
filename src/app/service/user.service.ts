@@ -3,6 +3,7 @@ import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../interface/user';
+import {JwtService} from './jwt.service';
 
 const URL_BACKEND = `${environment.apiUrl}`;
 
@@ -21,7 +22,7 @@ export class UserService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     });
-    return this.httpClient.get<User[]>(URL_BACKEND + '/user',{headers});
+    return this.httpClient.get<User[]>(URL_BACKEND + '/user');
   }
 
   updateUser(user: User): Observable<User> {
@@ -51,10 +52,12 @@ export class UserService {
   }
 
   getCurrentUser(): Observable<User> {
-    return this.httpClient.get<User>(URL_BACKEND + '/user/currentUser');
+    return this.getUserById(this.jwt.currentUserValue.id);
+    console.log(this.jwt.currentUserValue.id);
   }
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,
+              private jwt: JwtService) {
   }
 }
