@@ -1,18 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {House} from '../../interface/house';
-import {ActivatedRoute, Router} from '@angular/router';
 import {HouseService} from '../../service/house.service';
-import {ExtractI18nCommand} from '@angular/cli/commands/extract-i18n-impl';
-import {IComment} from '../../interface/comment';
-import {HouseType} from '../../interface/house-type';
-import {HouseStatus} from '../../interface/house-status';
-import {Village} from '../../interface/village';
-import {User} from '../../interface/user';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 import {Photo} from '../../interface/photo';
-import {Role} from '../../interface/role';
-import {CommentPost} from '../../interface/comment-post';
-import {Rate} from '../../interface/rate';
-import {RatePost} from '../../interface/rate-post';
+import {PhotoService} from '../../service/photo/photo.service';
+import {OrderHouse} from '../../interface/order-house';
+import {OderService} from '../../service/oder.service';
 
 @Component({
   selector: 'app-house-detail',
@@ -20,13 +14,11 @@ import {RatePost} from '../../interface/rate-post';
   styleUrls: ['./house-detail.component.css']
 })
 export class HouseDetailComponent implements OnInit {
-  rateChecked!: number;
-  rateGuest = 0;
-  isGuest: boolean | undefined;
-
-  id: number;
+  sub: Subscription | undefined;
+  // @ts-ignore
+  order: OrderHouse;
   house: House = {
-    id: 0,
+    name: '',
     houseStatus: {
       id: 0,
       name: ''
@@ -34,258 +26,76 @@ export class HouseDetailComponent implements OnInit {
     houseType: {
       id: 0,
       name: ''
-    }
-  };
-  listCmt: IComment[] = [];
-  listRate: Rate[] = [];
-  comment: Partial<IComment> = {
-    comment: '',
-    house: {
+    },
+    description: '',
+    priceByDay: 0,
+    village: {
       id: 0,
       name: '',
-      bedRoom: 0,
-      bathRoom: 0,
-      description: '',
-      priceByDay: 0,
-      houseType: {
+      district: {
         id: 0,
-        name: ''
-      },
-      houseStatus: {
-        id: 0,
-        name: ''
-      },
-      village: {
-        id: 0,
-        district: {
+        name: '',
+        province: {
           id: 0,
-          province: {
-            id: 0,
-            name: ''
-          },
           name: ''
-        },
-        name: ''
-      },
-      appUser: {
-        id: 0,
-        fullName: '',
-        username: '',
-        email: '',
-        password: '',
-        address: '',
-        phoneNumber: '',
-        role: {
-          id: 0,
-          name: '',
-        },
-      },
-      avatar: '',
-    }
+        }
+      }
+    },
+    avatar: '',
+    address: '',
+    bedRoom: 0,
+    bathRoom: 0
   };
-  rate: Partial<Rate> = {
-    star: 0,
-    house: {
-      id: 0,
-      name: '',
-      bedRoom: 0,
-      bathRoom: 0,
-      description: '',
-      priceByDay: 0,
-      houseType: {
-        id: 0,
-        name: ''
-      },
-      houseStatus: {
-        id: 0,
-        name: ''
-      },
-      village: {
-        id: 0,
-        district: {
-          id: 0,
-          province: {
-            id: 0,
-            name: ''
-          },
-          name: ''
-        },
-        name: ''
-      },
-      appUser: {
-        id: 0,
-        fullName: '',
-        username: '',
-        email: '',
-        password: '',
-        address: '',
-        phoneNumber: '',
-        role: {
-          id: 0,
-          name: '',
-        },
-      },
-      avatar: '',
-    }
+  id = 0;
+  photos: Photo[] = [];
+  photo: Photo = {
+    src: ''
   };
 
-  constructor(private houseService: HouseService, private router: Router, private a: ActivatedRoute) {
-    this.id = 0;
+  constructor(private houseService: HouseService,
+              private activeRoute: ActivatedRoute,
+              private photoService: PhotoService,
+              private orderHouseService: OderService,
+              private router: Router) {
+    this.sub = this.activeRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      // @ts-ignore
+      this.id = +paramMap.get('id');
+      this.getHouseById(this.id);
+      this.getAllPhotoByIdHouse(this.id);
+    });
   }
 
   ngOnInit(): void {
-    this.a.paramMap.subscribe(paraMap => {
-      this.id = Number(paraMap.get('id'));
-      this.showAllComment(this.id);
-      this.showAllRate(this.id);
-      this.houseService.getRateByHouseId(this.id).subscribe(data => {
-        this.listRate = data;
-        this.rateChecked = this.houseService.checkRates(this.listRate);
+  }
+
+  // tslint:disable-next-line:typedef
+  getHouseById(id: number) {
+    this.houseService.getHouseById(id).subscribe(house => {
+      this.house = house;
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  getAllPhotoByIdHouse(id: number) {
+    this.photoService.getALlPhotoByIdHouse(id).subscribe(photos => {
+      this.photos = photos;
+    });
+  }
+
+  createOrderHouse(): void {
+    this.orderHouseService.createOder(this.order, this.id).subscribe(() => {
+      this.router.navigate(['/house']);
+    });
+  }
+
+  getImageUrls(imageUrls: string[]): any {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < imageUrls.length; i++) {
+      this.photo.src = imageUrls[i];
+      this.photo.house = this.house;
+      this.photoService.createPhoto(this.photo).subscribe( photo => {
+        this.photo = photo;
       });
-      this.houseService.getHouseById(this.id).subscribe(result => {
-        this.house = result;
-      });
-    });
+    }
   }
-
-  detailHouse(id: number) {
-    this.houseService.detailHouse(id).subscribe(a => {
-      this.house = a;
-    });
-  }
-
-  showAllComment(id: number) {
-    this.houseService.getCommentsByHouseId(id).subscribe(b => {
-      this.listCmt = b;
-    });
-  }
-
-  createCommentHouse() {
-    let commentPost: CommentPost = {
-      id: 0,
-      houseId: this.house.id,
-      comment: this.comment.comment
-    };
-    this.comment.house = this.house;
-    this.houseService.createComment(commentPost).subscribe(next => {
-      this.houseService.getCommentsByHouseId(this.id).subscribe(next1 => {
-          this.listCmt = next1;
-        },
-      );
-      this.comment = {
-        comment: '',
-        house: {
-          id: 0,
-          name: '',
-          bedRoom: 0,
-          bathRoom: 0,
-          description: '',
-          priceByDay: 0,
-          houseType: {
-            id: 0,
-            name: ''
-          },
-          houseStatus: {
-            id: 0,
-            name: ''
-          },
-          village: {
-            id: 0,
-            district: {
-              id: 0,
-              province: {
-                id: 0,
-                name: ''
-              },
-              name: ''
-            },
-            name: ''
-          },
-          appUser: {
-            id: 0,
-            fullName: '',
-            username: '',
-            email: '',
-            password: '',
-            address: '',
-            phoneNumber: '',
-            role: {
-              id: 0,
-              name: '',
-            },
-          },
-          avatar: '',
-        }
-      };
-    });
-  }
-
-  showAllRate(id: number) {
-    this.houseService.getRateByHouseId(id).subscribe(b => {
-      this.listRate = b;
-    });
-  }
-
-  createRateHouse() {
-    let ratePost: RatePost = {
-      id: 0,
-      houseId: this.house.id,
-      star: this.rate.star
-    };
-    this.rate.house = this.house;
-    this.houseService.createRate(ratePost).subscribe(next => {
-      this.houseService.getRateByHouseId(this.id).subscribe(next1 => {
-          this.listRate = next1;
-          this.rateChecked = this.houseService.checkRates(this.listRate);
-
-        },
-      );
-      this.rate = {
-        star: 0,
-        house: {
-          id: 0,
-          name: '',
-          bedRoom: 0,
-          bathRoom: 0,
-          description: '',
-          priceByDay: 0,
-          houseType: {
-            id: 0,
-            name: ''
-          },
-          houseStatus: {
-            id: 0,
-            name: ''
-          },
-          village: {
-            id: 0,
-            district: {
-              id: 0,
-              province: {
-                id: 0,
-                name: ''
-              },
-              name: ''
-            },
-            name: ''
-          },
-          appUser: {
-            id: 0,
-            fullName: '',
-            username: '',
-            email: '',
-            password: '',
-            address: '',
-            phoneNumber: '',
-            role: {
-              id: 0,
-              name: '',
-            },
-          },
-          avatar: '',
-        }
-      };
-    });
-  }
-
 }

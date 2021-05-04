@@ -47,8 +47,11 @@ export class UserService {
 
 
   getUserById(id: number): Observable<User> {
-
     return this.httpClient.get<User>(URL_BACKEND + '/user/' + `${id}`);
+  }
+
+  getCurrentUser(): Observable<User> {
+    return this.httpClient.get<User>(URL_BACKEND + '/user/currentUser');
   }
 
 

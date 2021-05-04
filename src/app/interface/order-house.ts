@@ -1,8 +1,10 @@
 import {House} from './house';
+import {User} from './user';
 
 export interface OrderHouse {
   id: number;
-  post: House;
-  startDate: Date;
-  endDate: Date;
+  post?: House;
+  checkin: Date;
+  checkout: Date;
+  user?: User;
 }

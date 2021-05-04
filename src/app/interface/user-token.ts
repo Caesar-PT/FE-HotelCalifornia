@@ -1,6 +1,6 @@
 
 export interface UserToken {
-  accessToken: Boolean;
+  accessToken: boolean;
   id: number;
   username: string;
   password: string;

@@ -3,7 +3,7 @@ import {House} from './house';
 
 export interface Rate {
   id: number;
-  appUser: User;
-  house: House;
+  appUser?: User;
+  house?: House;
   star: number;
 }
