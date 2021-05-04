@@ -18,6 +18,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {HouseListComponent} from './house/house-list/house-list.component';
+import { CommentComponent } from './comment/comment.component';
+import { RateComponent } from './rate/rate.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {HouseListComponent} from './house/house-list/house-list.component';
     ChangePasswordComponent,
     HouseDetailComponent,
     UploadFileComponent,
+    CommentComponent,
+    RateComponent,
   ],
   imports: [
     BrowserModule,
