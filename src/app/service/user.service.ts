@@ -61,8 +61,6 @@ export class UserService {
     });
     return this.httpClient.get<User>(URL_BACKEND + '/user/' + `${id}`,{headers});
   }
-
-
   constructor(private httpClient: HttpClient) {
   }
 }
