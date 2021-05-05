@@ -15,6 +15,8 @@ import {House} from '../../interface/house';
   styleUrls: ['./rateandcomment.component.css']
 })
 export class RateandcommentComponent implements OnInit {
+  indexPagination: number = 1;
+  totalPagination!: number;
   rateChecked!: number;
   rateGuest = 0;
   isGuest: boolean | undefined;
@@ -68,26 +70,74 @@ export class RateandcommentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.a.paramMap.subscribe(paraMap => {
       this.id = Number(paraMap.get('id'));
-      this.showAllComment(this.id);
-      this.showAllRate(this.id);
-      this.rateService.getRateByHouseId(this.id).subscribe(data => {
-        this.listRate = data;
-        this.rateChecked = this.rateService.checkRates(this.listRate);
-      });
-      this.houseService.getHouseById(this.id).subscribe(result => {
-        this.house = result;
+      this.commentService.getCommentsByHouseId(this.id, 0).subscribe((data: IComment[]) => {
+        this.listCmt = data;
+        this.rateService.getRateByHouseId(this.id).subscribe(data => {
+          this.listRate = data;
+          this.rateChecked = this.rateService.checkRates(this.listRate);
+        });
+        this.houseService.getHouseById(this.id).subscribe(result => {
+          this.house = result;
+        });
       });
     });
+
   }
 
   // tslint:disable-next-line:typedef
-  showAllComment(id: number) {
-    this.commentService.getCommentsByHouseId(id).subscribe(b => {
+  showAllComment(id: number, index: number) {
+    this.commentService.getCommentsByHouseId(id, 0).subscribe(b => {
       this.listCmt = b;
     });
   }
+
+  findPaginnation() {
+    this.commentService.getCommentsByHouseId(this.id, (this.indexPagination * 5) - 5).subscribe((data: IComment[]) => {
+      this.listCmt = data;
+    });
+  }
+
+  indexPaginationChage(value: number) {
+    this.indexPagination = value;
+  }
+
+  firtPage() {
+    this.indexPagination = 1;
+    this.ngOnInit();
+  }
+
+  nextPage() {
+    this.indexPagination = this.indexPagination + 1;
+    if (this.indexPagination > this.totalPagination) {
+      this.indexPagination = this.indexPagination - 1;
+    }
+    this.commentService.getCommentsByHouseId(this.id, (this.indexPagination * 5) - 5).subscribe((data: IComment[]) => {
+      this.listCmt = data;
+    });
+  }
+
+  prviousPage() {
+    this.indexPagination = this.indexPagination - 1;
+    if (this.indexPagination == 0) {
+      this.indexPagination = 1;
+      this.ngOnInit();
+    } else {
+      this.commentService.getCommentsByHouseId(this.id, (this.indexPagination * 5) - 5).subscribe((data: IComment[]) => {
+        this.listCmt = data;
+      });
+    }
+  }
+
+  lastPage() {
+    this.indexPagination = this.listCmt.length / 5;
+    this.commentService.getCommentsByHouseId(this.id, (this.indexPagination * 5) - 5).subscribe((data: IComment[]) => {
+      this.listCmt = data;
+    });
+  }
+
 
   // tslint:disable-next-line:typedef
   createCommentHouse() {
@@ -98,7 +148,7 @@ export class RateandcommentComponent implements OnInit {
     };
     this.comment.house = this.house;
     this.commentService.createComment(commentPost).subscribe(next => {
-      this.commentService.getCommentsByHouseId(this.id).subscribe(next1 => {
+      this.commentService.getCommentsByHouseId(this.id, 0).subscribe(next1 => {
           this.listCmt = next1;
         },
       );
