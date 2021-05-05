@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {IComment} from '../../interface/comment';
@@ -8,17 +8,9 @@ import {IComment} from '../../interface/comment';
 })
 export class CommentService {
 
-  constructor(private httpClient: HttpClient) { }
-
-  getCommentsByHouseId(id: number): Observable<IComment[]> {
-    const token = localStorage.getItem('ACCESS_TOKEN');
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${token}`
-    });
-    return this.httpClient.get<IComment[]>('http://localhost:8080/comment/' + id,{headers});
+  constructor(private httpClient: HttpClient) {
   }
+
 
   createComment(comment: Partial<IComment>): Observable<IComment> {
     const token = localStorage.getItem('ACCESS_TOKEN');
@@ -27,6 +19,16 @@ export class CommentService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     });
-    return this.httpClient.post<IComment>('http://localhost:8080/comment/create/' , comment,{headers});
+    return this.httpClient.post<IComment>('http://localhost:8080/comment/create/', comment, {headers});
+  }
+
+  getCommentsByHouseId(id: number, index: number): Observable<IComment[]> {
+    const token = localStorage.getItem('ACCESS_TOKEN');
+    const headers = new HttpHeaders({
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    });
+    return this.httpClient.get<IComment[]>('http://localhost:8080/comment/' + id + '?index=' + index, {headers});
   }
 }

@@ -15,6 +15,28 @@
           <br>
           -{{c.comment}}
         </div>
+      <div >
+        <nav >
+          <ul >
+            <li ><button (click)="firtPage()">Đầu</button></li>
+            <li ><button  (click)="prviousPage()">Trang trước</button></li>
+            <!--                    <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
+            <li >
+              <!--                        <input class="form-control shadow-none rounded-0" type="text" placeholder="2/5">-->
+              <div>
+                <input type="number" min="1" [max]="totalPagination"
+                       placeholder="2" aria-label="Username"
+                       aria-describedby="basic-addon1" [value]="indexPagination">
+                <div >
+                  <span  id="basic-addon1">{{totalPagination}}</span>
+                </div>
+              </div>
+            </li>
+            <li ><button  (click)="nextPage()">Trang kế</button></li>
+            <li ><button  (click)="lastPage()">Cuối</button></li>
+          </ul>
+        </nav>
+      </div>
         <div>
             <textarea type="text" name="name" class="form-control mb-2 mr-sm-2" style="border-radius: 30px"
                       placeholder="Viết bình luận ..." [(ngModel)]="comment.comment"></textarea>

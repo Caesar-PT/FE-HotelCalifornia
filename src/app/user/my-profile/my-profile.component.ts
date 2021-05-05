@@ -53,6 +53,7 @@ export class MyProfileComponent implements OnInit {
   // tslint:disable-next-line:typedef
   updateUser(id: number) {
     this.userService.updateUser(this.user).subscribe(() => {
+      alert('Đổi thông tin thành công');
       this.router.navigate(['/']);
     });
   }

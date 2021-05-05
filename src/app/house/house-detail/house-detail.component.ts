@@ -96,14 +96,14 @@ export class HouseDetailComponent implements OnInit {
     for (let i = 0; i < imageUrls.length; i++) {
       this.photo.src = imageUrls[i];
       this.photo.house = this.house;
-      this.photoService.createPhoto(this.photo).subscribe( photo => {
+      this.photoService.createPhoto(this.photo).subscribe(photo => {
         this.photo = photo;
       });
     }
   }
 
   changeHouseStatus(): void {
-    this.houseService.updateHouse(this.id, this.house).subscribe( () => {
+    this.houseService.updateHouse(this.id, this.house).subscribe(() => {
       this.router.navigate(['/house-detail/' + this.id]).then(() => {
         window.location.reload();
       });
@@ -114,5 +114,18 @@ export class HouseDetailComponent implements OnInit {
     this.houseService.getAllStatus().subscribe(listStatus => {
       this.listHouseStatus = listStatus;
     });
+  }
+
+  createOrder(): void {
+    this.orderHouseService.createOder(this.order, this.id).subscribe(() => {
+      console.log('abcdef');
+      this.router.navigate(['/house-detail/' + this.id]).then(() => {
+        window.location.reload();
+      });
+    });
+  }
+
+  dateChanged(eventDate: string): Date | null {
+    return !!eventDate ? new Date(eventDate) : null;
   }
 }

@@ -3,8 +3,7 @@ import {User} from './user';
 
 export interface OrderHouse {
   id: number;
-  post?: House;
+  house?: House;
   checkin: Date;
   checkout: Date;
-  user?: User;
 }

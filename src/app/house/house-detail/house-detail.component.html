@@ -397,10 +397,14 @@
 
             <div class="agent-widget">
               <h3>Choose Time </h3>
-              <input type="text" name="datetimes" />
+              <form (ngSubmit)="createOrderHouse()">
+                <input type="date" [(ngModel)]="order.checkin" name="checkin" id="checkin">
+                <input type="date" [(ngModel)]="order.checkout" name="checkout" id="checkout">
+                <button href="#" class="button preview margin-top-5">Booking <i class="fa fa-arrow-circle-right"></i></button>
+              </form>
+
             </div>
             <!-- Agent Widget / End -->
-
           </div>
           <!-- Widget / End -->
 
