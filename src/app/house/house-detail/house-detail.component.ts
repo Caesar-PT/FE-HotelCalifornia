@@ -7,6 +7,7 @@ import {Photo} from '../../interface/photo';
 import {PhotoService} from '../../service/photo/photo.service';
 import {OrderHouse} from '../../interface/order-house';
 import {OderService} from '../../service/oder.service';
+import {HouseStatus} from '../../interface/house-status';
 
 @Component({
   selector: 'app-house-detail',
@@ -51,6 +52,7 @@ export class HouseDetailComponent implements OnInit {
   photo: Photo = {
     src: ''
   };
+  listHouseStatus: HouseStatus[] = [];
 
   constructor(private houseService: HouseService,
               private activeRoute: ActivatedRoute,
@@ -63,6 +65,7 @@ export class HouseDetailComponent implements OnInit {
       this.getHouseById(this.id);
       this.getAllPhotoByIdHouse(this.id);
     });
+    this.getALlHouseStatus();
   }
 
   ngOnInit(): void {
@@ -97,5 +100,19 @@ export class HouseDetailComponent implements OnInit {
         this.photo = photo;
       });
     }
+  }
+
+  changeHouseStatus(): void {
+    this.houseService.updateHouse(this.id, this.house).subscribe( () => {
+      this.router.navigate(['/house-detail/' + this.id]).then(() => {
+        window.location.reload();
+      });
+    });
+  }
+
+  getALlHouseStatus(): void {
+    this.houseService.getAllStatus().subscribe(listStatus => {
+      this.listHouseStatus = listStatus;
+    });
   }
 }

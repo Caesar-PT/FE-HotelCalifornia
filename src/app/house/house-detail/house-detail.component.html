@@ -386,19 +386,18 @@
 
             <!-- Agent Widget -->
             <div class="agent-widget">
-              <div class="agent-title">
-                <div class="agent-photo"><img src="assets/images/agent-avatar.jpg" alt="" /></div>
-                <div class="agent-details">
-                  <h4><a href="#">Jennie Wilson</a></h4>
-                  <span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
-                </div>
-                <div class="clearfix"></div>
-              </div>
+                <form (ngSubmit)="changeHouseStatus()">
+                  <h5>House's Status</h5>
+                  <select  [(ngModel)]="house.houseStatus.id" name="houseStatus" id="houseStatus">
+                    <option *ngFor="let s of listHouseStatus" [value]="s.id">{{s.name}}</option>
+                  </select>
+                  <button href="#" class="button preview margin-top-5">Change <i class="fa fa-arrow-circle-right"></i></button>
+                </form>
+            </div>
 
-              <input type="text" placeholder="Your Email" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$">
-              <input type="text" placeholder="Your Phone">
-              <textarea>I'm interested in this property [ID 123456] and I'd like to know more details.</textarea>
-              <button class="button fullwidth margin-top-5">Send Message</button>
+            <div class="agent-widget">
+              <h3>Choose Time </h3>
+              <input type="text" name="datetimes" />
             </div>
             <!-- Agent Widget / End -->
 

@@ -31,4 +31,8 @@ export class HouseService {
   getHouseById(id: number): Observable<House>{
     return this.httpClient.get<House>('http://localhost:8080/house/view/' + id);
   }
+
+  updateHouse(id: number, house: House): Observable<House> {
+    return this.httpClient.put<House>('http://localhost:8080/house/edit/' + id, house);
+  }
 }

@@ -21,6 +21,15 @@ export class HeaderComponent implements OnInit {
   getCurrentUser() {
     this.userService.getCurrentUser().subscribe(user => {
       this.currentUser = user;
+      console.log(this.currentUser.fullName);
     });
+  }
+
+  isCurrentUser(): boolean {
+    if (this.currentUser?.fullName == null) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

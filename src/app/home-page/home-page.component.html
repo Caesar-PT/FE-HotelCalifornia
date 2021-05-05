@@ -1,72 +1,5 @@
 <!-- Wrapper -->
 <div id="wrapper">
-
-
-  <!-- Compare Properties Widget
-  ================================================== -->
-  <div class="compare-slide-menu">
-
-    <div class="csm-trigger"></div>
-
-    <div class="csm-content">
-      <h4>Compare Properties <div class="csm-mobile-trigger"></div></h4>
-
-      <div class="csm-properties">
-
-        <!-- Property -->
-        <div class="listing-item compact">
-          <a href="single-property-page-2.html" class="listing-img-container">
-            <div class="remove-from-compare"><i class="fa fa-close"></i></div>
-            <div class="listing-badges">
-              <span>For Sale</span>
-            </div>
-            <div class="listing-img-content">
-              <span class="listing-compact-title">Eagle Apartments <i>$420,000</i></span>
-            </div>
-            <img src="assets/images/listing-01.jpg" alt="">
-          </a>
-        </div>
-
-        <!-- Property -->
-        <div class="listing-item compact">
-          <a href="single-property-page-2.html" class="listing-img-container">
-            <div class="remove-from-compare"><i class="fa fa-close"></i></div>
-            <div class="listing-badges">
-              <span>For Sale</span>
-            </div>
-            <div class="listing-img-content">
-              <span class="listing-compact-title">Selway Apartments <i>$420,000</i></span>
-            </div>
-            <img src="assets/images/listing-03.jpg" alt="">
-          </a>
-        </div>
-
-        <!-- Property -->
-        <div class="listing-item compact">
-          <a href="single-property-page-2.html" class="listing-img-container">
-            <div class="remove-from-compare"><i class="fa fa-close"></i></div>
-            <div class="listing-badges">
-              <span>For Sale</span>
-            </div>
-            <div class="listing-img-content">
-              <span class="listing-compact-title">Oak Tree Villas <i>$535,000</i></span>
-            </div>
-            <img src="assets/images/listing-05.jpg" alt="">
-          </a>
-        </div>
-
-      </div>
-
-      <div class="csm-buttons">
-        <a href="compare-properties.html" class="button">Compare</a>
-        <a href="#" class="button reset">Reset</a>
-      </div>
-    </div>
-
-  </div>
-  <!-- Compare Properties Widget / End -->
-
-
   <!-- Header Container
   ================================================== -->
   <app-header></app-header>
@@ -75,7 +8,7 @@
 
   <!-- Banner
   ================================================== -->
-  <div class="parallax" data-background="assets/images/home-parallax.jpg" data-color="#36383e" data-color-opacity="0.45" data-img-width="2500" data-img-height="1600">
+  <div class="parallax" data-background="https://i.pinimg.com/originals/68/ae/cc/68aecc196d9f0d49a064c0abcb26a8ec.jpg" data-color="#36383e" data-color-opacity="0.45" data-img-width="2500" data-img-height="1600">
     <div class="parallax-content">
 
       <div class="container">
@@ -292,7 +225,7 @@
                 </div>
 
                 <div class="listing-img-content">
-                  <span class="listing-price">{{h?.priceByDay}} <i>{{h.village?.name}} + {{h.village?.district?.name}} + {{h.village?.district?.province?.name}}</i></span>
+                  <span class="listing-price">{{h?.priceByDay}} VND/Day<i>{{h.village?.name}} - {{h.village?.district?.name}} - {{h.village?.district?.province?.name}}</i></span>
                   <span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
                   <span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
                 </div>
@@ -311,7 +244,7 @@
                   <h4><a routerLink="house-detail/{{h.id}}">{{h.name}}</a></h4>
                   <a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
                     <i class="fa fa-map-marker"></i>
-                    9364 School St. Lynchburg, NY
+                    {{h.village?.name}} - {{h.village?.district?.name}} - {{h.village?.district?.province?.name}}
                   </a>
                 </div>
 
@@ -320,12 +253,6 @@
                   <li>Bedrooms <span>{{h?.bedRoom}}</span></li>
                   <li>Bathrooms <span>{{h?.bathRoom}}</span></li>
                 </ul>
-
-                <div class="listing-footer">
-                  <a href="#"><i class="fa fa-user"></i> David Strozier</a>
-                  <span><i class="fa fa-calendar-o"></i> 1 day ago</span>
-                </div>
-
               </div>
 
             </div>
@@ -435,7 +362,7 @@
       <div class="col-md-4">
 
         <!-- Image Box -->
-        <a href="listings-list-with-sidebar.html" class="img-box" data-background-image="assets/images/popular-location-01.jpg">
+        <a href="listings-list-with-sidebar.html" class="img-box" data-background-image="https://wallpaperaccess.com/full/2918304.jpg">
 
           <!-- Badge -->
           <div class="listing-badges">
@@ -443,7 +370,7 @@
           </div>
 
           <div class="img-box-content visible">
-            <h4>New York </h4>
+            <h4>Hà Nội</h4>
             <span>14 Properties</span>
           </div>
         </a>
@@ -453,9 +380,9 @@
       <div class="col-md-8">
 
         <!-- Image Box -->
-        <a href="listings-list-with-sidebar.html" class="img-box" data-background-image="assets/images/popular-location-02.jpg">
+        <a href="listings-list-with-sidebar.html" class="img-box" data-background-image="https://wallpapercave.com/wp/UZlSakf.jpg">
           <div class="img-box-content visible">
-            <h4>Los Angeles</h4>
+            <h4>Vĩnh Phúc</h4>
             <span>24 Properties</span>
           </div>
         </a>
@@ -465,9 +392,9 @@
       <div class="col-md-8">
 
         <!-- Image Box -->
-        <a href="listings-list-with-sidebar.html" class="img-box" data-background-image="assets/images/popular-location-03.jpg">
+        <a href="listings-list-with-sidebar.html" class="img-box" data-background-image="https://www.teahub.io/photos/full/219-2193212_wallpaper-maldives-tropical-resort-evening-maldives-wallpaper-hd.jpg">
           <div class="img-box-content visible">
-            <h4>San Francisco </h4>
+            <h4>Đà Lạt</h4>
             <span>12 Properties</span>
           </div>
         </a>
@@ -477,9 +404,9 @@
       <div class="col-md-4">
 
         <!-- Image Box -->
-        <a href="listings-list-with-sidebar.html" class="img-box" data-background-image="assets/images/popular-location-04.jpg">
+        <a href="listings-list-with-sidebar.html" class="img-box" data-background-image="https://images.alphacoders.com/269/269623.jpg">
           <div class="img-box-content visible">
-            <h4>Miami</h4>
+            <h4>Vũng Tàu</h4>
             <span>9 Properties</span>
           </div>
         </a>
@@ -506,16 +433,16 @@
           <div class="blog-post">
 
             <!-- Img -->
-            <a href="blog-post.html" class="post-img">
-              <img src="assets/images/blog-post-01.jpg" alt="">
+            <a href="https://doanhnhanplus.vn/du-lich" class="post-img">
+              <img src="https://cdn.wallpapersafari.com/7/64/8EoGTQ.jpg" alt="">
             </a>
 
             <!-- Content -->
             <div class="post-content">
-              <h3><a href="#">8 Tips to Help You Finding New Home</a></h3>
-              <p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
+              <h3>3 ngày 2 đêm khám phá hang động Pygmy ở Quảng Bình</h3>
+              <p>Pygmy (Quảng Bình) được hiệp hội Hang động Hoàng gia Anh (BCRA) công nhận là hang động lớn thứ 4 trên thế giới</p>
 
-              <a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+              <a href="https://zingnews.vn/3-ngay-2-dem-kham-pha-hang-dong-pygmy-o-quang-binh-post1203944.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
             </div>
 
           </div>
@@ -529,16 +456,16 @@
           <div class="blog-post">
 
             <!-- Img -->
-            <a href="blog-post.html" class="post-img">
-              <img src="assets/images/blog-post-02.jpg" alt="">
+            <a href="https://doanhnhanplus.vn/du-lich" class="post-img">
+              <img src="https://data.1freewallpapers.com/download/resort-with-pool-and-hut-near-beach-4k-nature.jpg" alt="">
             </a>
 
             <!-- Content -->
             <div class="post-content">
-              <h3><a href="#">Bedroom Colors You'll Never Regret</a></h3>
-              <p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
+              <h3>Du lịch Nha Trang 4 ngày 3 đêm với 15 triệu đồng/người</h3>
+              <p>Nhờ thời tiết mát mẻ, nhiều bãi biển đẹp, Nha Trang (Khánh Hòa) là điểm đến được du khách lựa chọn dịp hè.</p>
 
-              <a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+              <a href="https://zingnews.vn/du-lich-nha-trang-4-ngay-3-dem-voi-15-trieu-dongnguoi-post1206355.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
             </div>
 
           </div>
@@ -552,16 +479,16 @@
           <div class="blog-post">
 
             <!-- Img -->
-            <a href="blog-post.html" class="post-img">
-              <img src="assets/images/blog-post-03.jpg" alt="">
+            <a href="https://doanhnhanplus.vn/du-lich" class="post-img">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE2gXFbztcJpMfxMgIb3_DEXN9FzflWM6ZLA&usqp=CAU" alt="">
             </a>
 
             <!-- Content -->
             <div class="post-content">
-              <h3><a href="#">What to Do a Year Before Buying Apartment</a></h3>
-              <p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
+              <h3>Hòn đảo gần Bali, phong cảnh hoang sơ lại có hình dáng như khủng long</h3>
+              <p>Những nơi càng khó đi, ít người biết đến đương nhiên sẽ giữ được vẻ đẹp hoang sơ, tinh khiết tuyệt đẹp như hòn đảo này.</p>
 
-              <a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
+              <a href="https://www.baogiaothong.vn/hon-dao-gan-bali-phong-canh-hoang-so-lai-co-hinh-dang-nhu-khung-long-d457892.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
             </div>
 
           </div>
