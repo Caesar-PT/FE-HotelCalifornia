@@ -8,6 +8,8 @@ import {MyProfileComponent} from './user/my-profile/my-profile.component';
 import {ChangePasswordComponent} from './user/change-password/change-password.component';
 import {HouseDetailComponent} from './house/house-detail/house-detail.component';
 import {UploadFileComponent} from './upload-file/upload-file.component';
+import { BookingHouseComponent } from './house/booking-house/booking-house.component';
+import { SearchHouseComponent } from './house/search-house/search-house.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,14 @@ const routes: Routes = [
   {
     path: 'upload-file',
     component: UploadFileComponent
+  },
+  {
+    path: 'booking-house',
+    component: BookingHouseComponent
+  },
+  {
+    path: 'search',
+    component: SearchHouseComponent
   }
 ];
 

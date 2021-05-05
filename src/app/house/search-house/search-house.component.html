@@ -1,0 +1,152 @@
+<form [formGroup]="houseForm" (ngSubmit)="getAllHouseByCondition()">
+<section class="search margin-bottom-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- Title -->
+                <h3 class="search-title">Search</h3>
+
+                <div class="main-search-box no-shadow">
+
+
+                    <div class="row with-forms">
+                        <div class="col-md-3">
+                            <select  formControlName="houseStatus">
+                                <option value="">Any status</option>
+                                <option *ngFor="let status of listStatus" [value]="status.id">{{status.name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <select  formControlName="houseType">
+                                <option value="">Any type</option>
+                                <option *ngFor="let type of listType" [value]="type.id">{{type.name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="main-search-input">
+                                <input type="text" placeholder="Enter address e.g. street, city or state" disabled="true"/>
+                                <button class="button" type="submit">Search</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row with-forms">
+                        <div class="col-md-3">
+                            <select data-placeholder="Beds" formControlName="bedRoom">
+                                <option value="">Bedrooms (Any)</option>4
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-3">
+                            <select data-placeholder="Baths" formControlName="bathRoom">
+                                <option value="">Bathrooms (Any)</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="select-input disabled-first-option">
+                                <input type="text" placeholder="Min Price" data-unit="VND" formControlName="priceMinDay">
+                                <select formControlName="priceMinDay">
+                                    <option value="1000">1 000</option>
+                                    <option value="2000">2 000</option>
+                                    <option value="3000">3 000</option>
+                                    <option value="4000">4 000</option>
+                                    <option value="5000">5 000</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-3">
+                            <div class="select-input disabled-first-option">
+                                <input type="text" placeholder="Max Price" data-unit="VND" formControlName="priceMaxDay">
+                                <select formControlName="priceMaxDay">
+                                    <option value="1000">1 000</option>
+                                    <option value="2000">2 000</option>
+                                    <option value="3000">3 000</option>
+                                    <option value="4000">4 000</option>
+                                    <option value="5000">5 000</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Row With Forms / End -->
+
+
+                    <!-- More Search Options -->
+                    <a href="#" class="more-search-options-trigger margin-top-10" data-open-title="Search by locatin"
+                        data-close-title="Less Options"></a>
+
+                    <div class="more-search-options relative">
+                        <div class="more-search-options-container">
+
+                            <!-- Row With Forms -->
+                            <div class="row with-forms">
+
+                                <!-- Age of Home -->
+                                <div class="col-md-3">
+                                    <select formControlName="province">
+                                        <option value="">Province (any)</option>
+                                        <option *ngFor="let location of listProvince" [value]="location.id">
+                                            {{location.name}}
+                                          </option>
+                                    </select>
+                                </div>
+
+                                <!-- Rooms Area -->
+                                <div class="col-md-3">
+                                    <select formControlName="district">
+                                        <option value="">District (any)</option>
+                                        <option *ngFor="let location of listDistrict" [value]="location.id">
+                                            {{location.name}}
+                                          </option>
+                                    </select>
+                                </div>
+
+                                <!-- Min Area -->
+                                <div class="col-md-3">
+                                    <select data-placeholder="Beds" formControlName="village">
+                                        <option value="">Village (Any)</option>
+                                        <option *ngFor="let location of listVillage" [value]="location.id">
+                                            {{location.name}}
+                                          </option>
+                                    </select>
+                                </div>
+
+                                <!-- Max Area -->
+                                <div class="col-md-3">
+                                    <!-- <select data-placeholder="Baths" >
+                                        <option>Baths (Any)</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</form>

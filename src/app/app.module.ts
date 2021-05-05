@@ -23,6 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { BookingHouseComponent } from './house/booking-house/booking-house.component';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import { SearchHouseComponent } from './house/search-house/search-house.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +39,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     ChangePasswordComponent,
     HouseDetailComponent,
     UploadFileComponent,
-    HeaderComponent
+    HeaderComponent,
+    BookingHouseComponent,
+    SearchHouseComponent
   ],
     imports: [
         BrowserModule,
@@ -51,7 +57,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatRippleModule
     ],
   providers: [],
   bootstrap: [AppComponent]
