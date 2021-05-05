@@ -16,17 +16,15 @@ export class HouseListComponent implements OnInit {
 
   constructor(private houseService: HouseService,
               private photoService: PhotoService) {
-    this.getAllHouse();
+    this.getAllHouse(this.listHouse);
   }
 
   ngOnInit(): void {
   }
 
-  getAllHouse(): House[] {
-    this.houseService.getAllHouse().subscribe((houses) => {
-      this.listHouse = houses;
-    });
-    return this.listHouse;
+  getAllHouse(list: House[]) {
+    this.listHouse = list;
+    console.log('getAll',this.listHouse);
   }
 
 }
