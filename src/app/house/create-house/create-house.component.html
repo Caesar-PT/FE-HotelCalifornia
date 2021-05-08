@@ -9,7 +9,9 @@
     <div class="csm-trigger"></div>
 
     <div class="csm-content">
-      <h4>Compare Properties <div class="csm-mobile-trigger"></div></h4>
+      <h4>Compare Properties
+        <div class="csm-mobile-trigger"></div>
+      </h4>
 
       <div class="csm-properties">
 
@@ -97,7 +99,8 @@
               <!-- Title -->
               <div class="example-container">
                 <h5>House's Name</h5>
-                <input [(ngModel)]="house.name" id="name" formControlName="name" name="name"/>
+
+                <input type="text" [(ngModel)]="house.name" name="name">
               </div>
               <!-- Row -->
               <div class="row with-forms">
@@ -105,7 +108,7 @@
                 <!-- Status -->
                 <div class="col-md-6">
                   <h5>House's Status</h5>
-                  <select  [(ngModel)]="house.houseStatus.id" name="houseStatus" id="houseStatus">
+                  <select [(ngModel)]="house.houseStatus.id" name="houseStatus" id="houseStatus">
                     <option *ngFor="let s of listHouseStatus" [value]="s.id">{{s.name}}</option>
                   </select>
                 </div>
@@ -114,7 +117,7 @@
                 <div class="col-md-6">
                   <h5>House's Type</h5>
                   <select [(ngModel)]="house.houseType.id" name="houseType" id="houseType">
-                    <option *ngFor="let t of listHouseType" [value] = "t.id">{{t.name}}</option>
+                    <option *ngFor="let t of listHouseType" [value]="t.id">{{t.name}}</option>
                   </select>
                 </div>
 
@@ -162,7 +165,8 @@
                   <!-- City -->
                   <div class="col-md-6">
                     <h5>City / Province</h5>
-                    <select (change)="selectChangeHandlerProvince($event)" [(ngModel)]="house.village.district.province.id" name="province">
+                    <select (change)="selectChangeHandlerProvince($event)"
+                            [(ngModel)]="house.village.district.province.id" name="province">
                       <option value="0">--Select--</option>
                       <option *ngFor="let p of listProvince" [value]="p.id">{{p.name}}</option>
                     </select>
@@ -171,7 +175,8 @@
                   <!-- District -->
                   <div class="col-md-6">
                     <h5>District</h5>
-                    <select (change)="selectChangeHandlerDistrict($event)" [(ngModel)]="house.village.district.id" name="district">
+                    <select (change)="selectChangeHandlerDistrict($event)" [(ngModel)]="house.village.district.id"
+                            name="district">
                       <option *ngIf="house.village.district.province.id == 0" value="0">--Select--</option>
                       <option *ngFor="let d of listDistrict" [value]="d.id">{{d.name}}</option>
                     </select>
@@ -201,7 +206,8 @@
               <!-- Description -->
               <div class="form">
                 <h5>Description</h5>
-                <textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" spellcheck="true" [(ngModel)]="house.description"></textarea>
+                <textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary" spellcheck="true"
+                          [(ngModel)]="house.description"></textarea>
               </div>
 
               <!-- Row -->
@@ -238,7 +244,8 @@
             </div>
             <!-- Section / End -->
             <div class="divider"></div>
-            <button href="#" class="button preview margin-top-5">Create <i class="fa fa-arrow-circle-right"></i></button>
+            <button href="#" class="button preview margin-top-5">Create <i class="fa fa-arrow-circle-right"></i>
+            </button>
 
           </div>
         </div>
@@ -257,7 +264,8 @@
         <div class="col-md-5 col-sm-6">
           <img class="footer-logo" src="assets/images/logo.png" alt="">
           <br><br>
-          <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+          <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia
+            tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
         </div>
 
         <div class="col-md-4 col-sm-6 ">

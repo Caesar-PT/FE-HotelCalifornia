@@ -6,6 +6,7 @@ import {first} from 'rxjs/operators';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Role} from '../../interface/role';
 import {User} from '../../interface/user';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-login-register',
@@ -67,11 +68,16 @@ export class LoginRegisterComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       error => {
-        alert('Tài khoản đã tồn tại!');
-        console.log(error);
+        if (error instanceof HttpErrorResponse) {
+          if (error.status === 400) {
+            alert('Account already exists');
+          } else if (error.status === 500) {
+            alert('Register error!');
+          }
+        }
       });
   }
-
+  
   // tslint:disable-next-line:typedef
   login() {
     this.submitted = true;

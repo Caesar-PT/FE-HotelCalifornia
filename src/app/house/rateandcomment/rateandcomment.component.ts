@@ -87,7 +87,6 @@ export class RateandcommentComponent implements OnInit {
 
   }
 
-  // tslint:disable-next-line:typedef
   showAllComment(id: number, index: number) {
     this.commentService.getCommentsByHouseId(id, 0).subscribe(b => {
       this.listCmt = b;
@@ -139,7 +138,6 @@ export class RateandcommentComponent implements OnInit {
   }
 
 
-  // tslint:disable-next-line:typedef
   createCommentHouse() {
     const commentPost: CommentPost = {
       id: 0,
@@ -158,14 +156,12 @@ export class RateandcommentComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
   showAllRate(id: number) {
     this.rateService.getRateByHouseId(id).subscribe(b => {
       this.listRate = b;
     });
   }
 
-  // tslint:disable-next-line:typedef
   createRateHouse() {
     const ratePost: RatePost = {
       id: 0,
@@ -185,7 +181,6 @@ export class RateandcommentComponent implements OnInit {
     });
   }
 
-  // tslint:disable-next-line:typedef
   createRate(i: number) {
     console.log(i);
     this.rate.house = this.house;

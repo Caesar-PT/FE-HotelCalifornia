@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {User} from '../interface/user';
 import {JwtService} from './jwt.service';
-
+import {catchError, tap} from "rxjs/operators";
 const URL_BACKEND = `${environment.apiUrl}`;
 
 @Injectable({
@@ -36,6 +36,7 @@ export class UserService {
     return this.httpClient.put<User>(URL_BACKEND + '/user/update', user, {headers});
   }
 
+
   resetPassword(user: User): Observable<User> {
     const token = localStorage.getItem('ACCESS_TOKEN');
     const headers = new HttpHeaders({
@@ -48,14 +49,22 @@ export class UserService {
 
 
   getUserById(id: number): Observable<User> {
-    return this.httpClient.get<User>(URL_BACKEND + '/user/' + `${id}`);
-  }
+    return this.httpClient.get<User>(URL_BACKEND + '/user/' + `${id}`)
 
-  getCurrentUser(): Observable<User> {
+
+  };
+  getUserById1(id: number) {
+  return this.httpClient.get(URL_BACKEND + '/user/' + `${id}`).pipe(
+    tap(
+      user => JSON.stringify(user)),
+    catchError(err => of([]))
+  );
+}
+
+
+  getCurrentUser() {
     return this.getUserById(this.jwt.currentUserValue.id);
-    console.log(this.jwt.currentUserValue.id);
   }
-
 
   constructor(private httpClient: HttpClient,
               private jwt: JwtService) {

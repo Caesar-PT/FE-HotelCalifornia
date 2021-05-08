@@ -24,6 +24,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { RateandcommentComponent } from './house/rateandcomment/rateandcomment.component';
+import { ProfileComponent } from './user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RateandcommentComponent } from './house/rateandcomment/rateandcomment.c
     HouseDetailComponent,
     UploadFileComponent,
     HeaderComponent,
-    RateandcommentComponent
+    RateandcommentComponent,
+    ProfileComponent
   ],
     imports: [
         BrowserModule,

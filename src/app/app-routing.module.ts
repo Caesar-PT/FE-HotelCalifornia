@@ -8,6 +8,7 @@ import {MyProfileComponent} from './user/my-profile/my-profile.component';
 import {ChangePasswordComponent} from './user/change-password/change-password.component';
 import {HouseDetailComponent} from './house/house-detail/house-detail.component';
 import {UploadFileComponent} from './upload-file/upload-file.component';
+import {ProfileComponent} from './user/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'my-profile',
     component: MyProfileComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
 
   {

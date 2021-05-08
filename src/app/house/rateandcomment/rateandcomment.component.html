@@ -1,72 +1,116 @@
+<head>
+  <script>
+    $(document).ready(function () {
+
+      $("input[type='radio']").click(function () {
+        var sim = $("input[type='radio']:checked").val();
+//alert(sim);
+        if (sim < 3) {
+          $('.myratings').css('color', 'red');
+          $(".myratings").text(sim);
+        } else {
+          $('.myratings').css('color', 'green');
+          $(".myratings").text(sim);
+        }
+      });
+    });
+  </script>
+</head>
 <div class="container">
   <div class="row">
-      <div
-        *ngIf="rateChecked">
-        <h3>Đánh giá ({{listRate.length}})</h3>
-        {{rateChecked}}/5
-        <span class="fa fa-star checked"></span>
-      </div>
+    <div
+      *ngIf="rateChecked">
+      <h3>Đánh giá ({{listRate.length}})</h3>
+      {{rateChecked}}/5
+      <span class="fa fa-star checked"></span>
+    </div>
 
     <div class="property-description">
-        <h3 class="desc-headline">Comment</h3>
+      <h3 class="desc-headline">Comment</h3>
 
-        <div class="listing-item" *ngFor="let c of listCmt ">
-          {{c.appUser?.fullName}}:
-          <br>
-          -{{c.comment}}
-        </div>
-      <div >
-        <nav >
-          <ul >
-            <li ><button (click)="firtPage()">Đầu</button></li>
-            <li ><button  (click)="prviousPage()">Trang trước</button></li>
-            <!--                    <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
-            <li >
-              <!--                        <input class="form-control shadow-none rounded-0" type="text" placeholder="2/5">-->
+      <div class="listing-item" *ngFor="let c of listCmt ">
+        {{c.appUser?.fullName}}:
+        <br>
+        -{{c.comment}}
+      </div>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <button (click)="firtPage()">Đầu</button>
+            </li>
+            <li>
+              <button (click)="prviousPage()">Trang trước</button>
+            </li>
+            <li>
               <div>
                 <input type="number" min="1" [max]="totalPagination"
                        placeholder="2" aria-label="Username"
                        aria-describedby="basic-addon1" [value]="indexPagination">
-                <div >
-                  <span  id="basic-addon1">{{totalPagination}}</span>
+                <div>
+                  <span id="basic-addon1">{{totalPagination}}</span>
                 </div>
               </div>
             </li>
-            <li ><button  (click)="nextPage()">Trang kế</button></li>
-            <li ><button  (click)="lastPage()">Cuối</button></li>
+            <li>
+              <button (click)="nextPage()">Trang kế</button>
+            </li>
+            <li>
+              <button (click)="lastPage()">Cuối</button>
+            </li>
           </ul>
         </nav>
       </div>
-        <div>
+      <div>
             <textarea type="text" name="name" class="form-control mb-2 mr-sm-2" style="border-radius: 30px"
                       placeholder="Viết bình luận ..." [(ngModel)]="comment.comment"></textarea>
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary mb-2" (click)="createCommentHouse()">Đăng</button>
+      </div>
+
+
+      <div class="layout-switcher hidden"><a href="#" class="list"><i class="fa fa-th-list"></i></a></div>
+      <div class="listings-container list-layout">
+
+        <div class="listing-item">
+
         </div>
-        <div>
-          <button type="button" class="btn btn-primary mb-2" (click)="createCommentHouse()">Đăng</button>
-        </div>
-
-
-        <div class="layout-switcher hidden"><a href="#" class="list"><i class="fa fa-th-list"></i></a></div>
-        <div class="listings-container list-layout">
-
-          <div class="listing-item">
-
+        <div class="listing-item">
+          <div class="listing-content">
           </div>
-          <div class="listing-item">
-            <div class="listing-content">
+        </div>
+      </div>
+    </div>
+
+    <h3 class="desc-headline">Rate</h3>
+
+    <!--    <div>-->
+    <!--      <input type="number" name="name"-->
+    <!--             [(ngModel)]="rate.star" min="1" max="5">-->
+    <!--    </div>-->
+    <div class="container d-flex justify-content-center mt-100">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+              <fieldset class="rating">
+                <input type="radio" [(ngModel)]="rate.star" id="star5" name="rating" value="5"/>
+                <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                <input type="radio" [(ngModel)]="rate.star" id="star4" name="rating" value="4"/>
+                <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                <input type="radio" [(ngModel)]="rate.star" id="star3" name="rating" value="3"/>
+                <label class="full" for="star3" title="Meh - 3 stars"></label>
+                <input type="radio" [(ngModel)]="rate.star" id="star2" name="rating" value="2"/>
+                <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                <input type="radio" [(ngModel)]="rate.star" id="star1" name="rating" value="1"/>
+                <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+              </fieldset>
             </div>
           </div>
         </div>
       </div>
-
-    <h3 class="desc-headline">Rate</h3>
-
-    <div>
-      <input type="number" name="name"
-             [(ngModel)]="rate.star" min="1" max="5">
     </div>
     <div>
       <button type="button" class="btn btn-primary mb-2" (click)="createRateHouse()">Chọn</button>
     </div>
   </div>
-</div>
