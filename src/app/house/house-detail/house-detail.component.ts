@@ -8,6 +8,7 @@ import {PhotoService} from '../../service/photo/photo.service';
 import {OrderHouse} from '../../interface/order-house';
 import {OderService} from '../../service/oder.service';
 import {HouseStatus} from '../../interface/house-status';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-house-detail',
@@ -15,6 +16,7 @@ import {HouseStatus} from '../../interface/house-status';
   styleUrls: ['./house-detail.component.css']
 })
 export class HouseDetailComponent implements OnInit {
+  range: FormGroup;
   sub: Subscription | undefined;
   // @ts-ignore
   order: OrderHouse;
@@ -53,6 +55,8 @@ export class HouseDetailComponent implements OnInit {
     src: ''
   };
   listHouseStatus: HouseStatus[] = [];
+  cost = 0;
+  numberNights = 0;
 
   constructor(private houseService: HouseService,
               private activeRoute: ActivatedRoute,
@@ -66,6 +70,11 @@ export class HouseDetailComponent implements OnInit {
       this.getAllPhotoByIdHouse(this.id);
     });
     this.getALlHouseStatus();
+
+    this.range = new FormGroup({
+      start: new FormControl(),
+      end: new FormControl()
+    });
   }
 
   ngOnInit(): void {
@@ -82,31 +91,13 @@ export class HouseDetailComponent implements OnInit {
   getAllPhotoByIdHouse(id: number) {
     this.photoService.getALlPhotoByIdHouse(id).subscribe(photos => {
       this.photos = photos;
+      console.log(this.photos);
     });
   }
 
   createOrderHouse(): void {
     this.orderHouseService.createOder(this.order, this.id).subscribe(() => {
       this.router.navigate(['/house']);
-    });
-  }
-
-  getImageUrls(imageUrls: string[]): any {
-    // tslint:disable-next-line:prefer-for-of
-    for (let i = 0; i < imageUrls.length; i++) {
-      this.photo.src = imageUrls[i];
-      this.photo.house = this.house;
-      this.photoService.createPhoto(this.photo).subscribe(photo => {
-        this.photo = photo;
-      });
-    }
-  }
-
-  changeHouseStatus(): void {
-    this.houseService.updateHouse(this.id, this.house).subscribe(() => {
-      this.router.navigate(['/house-detail/' + this.id]).then(() => {
-        window.location.reload();
-      });
     });
   }
 
@@ -125,7 +116,25 @@ export class HouseDetailComponent implements OnInit {
     });
   }
 
-  dateChanged(eventDate: string): Date | null {
-    return !!eventDate ? new Date(eventDate) : null;
+  // tslint:disable-next-line:typedef
+  getNumberDay() {
+    const checkin = new Date(this.range.value.start);
+    const checkout = new Date(this.range.value.end);
+    const DAY = 86400 * 1000;
+    this.numberNights = Math.round((checkout.getTime() - checkin.getTime()) / DAY);
+    return this.numberNights;
   }
+
+  // tslint:disable-next-line:typedef
+  onChange() {
+    this.cost = this.house.priceByDay * this.getNumberDay();
+  }
+
+  // tslint:disable-next-line:typedef
+  dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement) {
+    console.log(dateRangeStart.value);
+    console.log(dateRangeEnd.value);
+  }
+
+
 }
