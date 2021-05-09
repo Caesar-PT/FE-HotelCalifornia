@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {User} from '../interface/user';
-import {JwtService} from './jwt.service';
+import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { User } from '../interface/user';
+import { JwtService } from './jwt.service';
 
 const URL_BACKEND = `${environment.apiUrl}`;
 
@@ -11,6 +11,14 @@ const URL_BACKEND = `${environment.apiUrl}`;
   providedIn: 'root'
 })
 export class UserService {
+
+  private user = new BehaviorSubject(null);
+  user$ = this.user.asObservable();
+
+  getUser(): any {
+    return this.user.value;
+  }
+
   createUser(user: User): Observable<User> {
     return this.httpClient.post<User>(URL_BACKEND + '/user/signup', user);
   }
@@ -33,7 +41,7 @@ export class UserService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     });
-    return this.httpClient.put<User>(URL_BACKEND + '/user/update', user, {headers});
+    return this.httpClient.put<User>(URL_BACKEND + '/user/update', user, { headers });
   }
 
   resetPassword(user: User): Observable<User> {
@@ -43,7 +51,7 @@ export class UserService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
     });
-    return this.httpClient.put<User>(URL_BACKEND + '/user/resetPassword', user, {headers});
+    return this.httpClient.put<User>(URL_BACKEND + '/user/resetPassword', user, { headers });
   }
 
 
@@ -51,13 +59,17 @@ export class UserService {
     return this.httpClient.get<User>(URL_BACKEND + '/user/' + `${id}`);
   }
 
-  getCurrentUser(): Observable<User> {
+  private getCurrentUser(): Observable<User> {
     return this.getUserById(this.jwt.currentUserValue.id);
-    console.log(this.jwt.currentUserValue.id);
   }
 
 
   constructor(private httpClient: HttpClient,
-              private jwt: JwtService) {
+    private jwt: JwtService) {
+    if (!this.user.value) {
+      this.getCurrentUser().subscribe((user: any) => {
+        this.user.next(user);
+      });
+    }
   }
 }

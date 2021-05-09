@@ -84,6 +84,7 @@ export class HouseDetailComponent implements OnInit {
   getHouseById(id: number) {
     this.houseService.getHouseById(id).subscribe(house => {
       this.house = house;
+      console.log('house',this.house);
     });
   }
 
@@ -136,5 +137,8 @@ export class HouseDetailComponent implements OnInit {
     console.log(dateRangeEnd.value);
   }
 
+  detail(house?: any){
+    this.router.navigateByUrl('/booking-house/' + this.house.id);
+  }
 
 }

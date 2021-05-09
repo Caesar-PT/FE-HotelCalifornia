@@ -19,9 +19,9 @@ export class HeaderComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   getCurrentUser() {
-    this.userService.getCurrentUser().subscribe(user => {
+    this.userService.user$.subscribe((user: any) => {
       this.currentUser = user;
-      console.log(this.currentUser.fullName);
+      console.log(this.currentUser);
     });
   }
 

@@ -45,7 +45,7 @@ const routes: Routes = [
     component: UploadFileComponent
   },
   {
-    path: 'booking-house',
+    path: 'booking-house/:id',
     component: BookingHouseComponent
   },
   {

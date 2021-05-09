@@ -1,1 +1,39 @@
-
+<app-header></app-header>
+<div class="row" style="margin-top: 30px;">
+    <div class="col-md-7">
+        <form class="row" [formGroup]="form" style="margin-left: 20%; background-color: azure; padding-bottom: 3rem;" (ngSubmit)="submit()">
+            <div class="col-md-12">
+                <h1 style="text-align: center;">Thông tin cá nhân</h1>
+            </div>
+            <div class="col-md-12">
+                <h3>Họ và tên thật của bạn</h3>
+                <input type="text" class="forms" formControlName="fullName">
+            </div>
+            <div class="col-md-12">
+                <h3>Email (Hãy điền đúng email của bạn để chúng tôi gửi thông báo cho bạn)</h3>
+                <input type="text" class="forms" formControlName="email">
+            </div>
+            <div class="col-md-12" >
+                <h3>Số điện thoại (không bắt buộc)</h3>
+                <input type="text" class="forms" formControlName="phoneNumber">
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-6" style="padding: 0%;">
+                    <h3>Thuê từ ngày</h3>
+                    <input type="date"  class="forms">
+                </div>
+                <div class="col-md-6" style="padding: 0%;">
+                    <h3>Đến ngày</h3>
+                    <input type="date" class="forms">
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                <button type="submit" class="button calc-button" >Thuê nhà</button>
+                <button type="reset" class="button calc-button ml-2">Nhập lại</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-5">
+        asdasd
+    </div>
+</div>
