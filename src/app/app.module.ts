@@ -23,7 +23,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { OrderHouseComponent } from './house/order-house/order-house.component';
+import { BookingHouseComponent } from './house/booking-house/booking-house.component';
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import { SearchHouseComponent } from './house/search-house/search-house.component';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +40,8 @@ import { OrderHouseComponent } from './house/order-house/order-house.component';
     HouseDetailComponent,
     UploadFileComponent,
     HeaderComponent,
-    OrderHouseComponent
+    BookingHouseComponent,
+    SearchHouseComponent
   ],
     imports: [
         BrowserModule,
@@ -53,7 +57,9 @@ import { OrderHouseComponent } from './house/order-house/order-house.component';
         BrowserAnimationsModule,
         MatFormFieldModule,
         MatInputModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatRippleModule
     ],
   providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }],
   bootstrap: [AppComponent]

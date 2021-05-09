@@ -4,6 +4,10 @@ import {Observable} from 'rxjs';
 import {House} from '../interface/house';
 import {HouseStatus} from '../interface/house-status';
 import {HouseType} from '../interface/house-type';
+import { Village } from '../interface/village';
+import { HouseDTO } from '../interface/house-dto';
+import { District } from '../interface/district';
+import { Province } from '../interface/province';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +34,21 @@ export class HouseService {
 
   getHouseById(id: number): Observable<House>{
     return this.httpClient.get<House>('http://localhost:8080/house/view/' + id);
+  }
+
+  getAllVillage(): Observable<Village[]>{
+    return this.httpClient.get<Village[]>('http://localhost:8080/house/village');
+  }
+
+  getAllDistrict(): Observable<District[]>{
+    return this.httpClient.get<District[]>('http://localhost:8080/house/district');
+  }
+
+  getAllProvince(): Observable<Province[]>{
+    return this.httpClient.get<Province[]>('http://localhost:8080/house/province');
+  }
+
+  search(house: HouseDTO): Observable<[]> {
+    return this.httpClient.post<[]>('http://localhost:8080/house/show', house);
   }
 }
