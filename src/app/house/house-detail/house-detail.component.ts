@@ -17,6 +17,9 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class HouseDetailComponent implements OnInit {
   range: FormGroup;
+  rate={star: null};
+  comment={comment: null};
+  listCmt: any[] = [];
   sub: Subscription | undefined;
   // @ts-ignore
   order: OrderHouse;
@@ -130,6 +133,16 @@ export class HouseDetailComponent implements OnInit {
   onChange() {
     this.cost = this.house.priceByDay * this.getNumberDay();
   }
+  
+  create(number: any){
+  }
+
+  createRate(number: any){
+  }
+
+  createRateHouse(){}
+
+  createCommentHouse(){}
 
   // tslint:disable-next-line:typedef
   dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement) {
