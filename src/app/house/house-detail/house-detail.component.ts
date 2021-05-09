@@ -100,7 +100,7 @@ export class HouseDetailComponent implements OnInit {
   }
 
   createOrderHouse(): void {
-    this.orderHouseService.createOder(this.order, this.id).subscribe(() => {
+    this.orderHouseService.createOder(this.order).subscribe(() => {
       this.router.navigate(['/house']);
     });
   }
@@ -112,7 +112,7 @@ export class HouseDetailComponent implements OnInit {
   }
 
   createOrder(): void {
-    this.orderHouseService.createOder(this.order, this.id).subscribe(() => {
+    this.orderHouseService.createOder(this.order).subscribe(() => {
       console.log('abcdef');
       this.router.navigate(['/house-detail/' + this.id]).then(() => {
         window.location.reload();

@@ -10,7 +10,7 @@ export class OderService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createOder(oderHouse: OrderHouse, id: number): Observable<OrderHouse>{
-    return this.httpClient.post<OrderHouse>('http://localhost:8080/house/view/' + id + '/booking', oderHouse);
+  createOder(oderHouse: OrderHouse): Observable<OrderHouse>{
+    return this.httpClient.post<OrderHouse>('http://localhost:8080/house/bookHouse', oderHouse);
   }
 }

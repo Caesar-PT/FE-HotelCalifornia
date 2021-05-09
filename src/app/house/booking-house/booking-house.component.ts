@@ -8,6 +8,7 @@ import { House } from 'src/app/interface/house';
 import { OrderHouse } from 'src/app/interface/order-house';
 import { User } from 'src/app/interface/user';
 import { HouseService } from 'src/app/service/house.service';
+import { OderService } from 'src/app/service/oder.service';
 import { UserService } from 'src/app/service/user.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class BookingHouseComponent implements OnInit {
     private fb: FormBuilder,
     private detech: ChangeDetectorRef,
     private activeRoute: ActivatedRoute,
-    private houseService: HouseService
+    private houseService: HouseService,
+    private orderService: OderService
   ) {
     this.sub = this.activeRoute.paramMap.subscribe((param: ParamMap)=>{
       // @ts-ignore
@@ -44,21 +46,16 @@ export class BookingHouseComponent implements OnInit {
     fullName: '',
     email: '',
     phoneNumber: '',
+    checkin: '',
+    checkout: ''
   })
 
   orderForm = this.fb.group({
-    house: '',
     checkin: ['',],
     checkout: '',
     email: '',
     phoneNumber: '',
-    houseInformation: '',
-    appUser: ''
   })
-
-  houseInformation = this.fb.group({
-
-  });
 
   getHouseById(id: number) {
     this.houseService.getHouseById(id).subscribe(house => {
@@ -78,6 +75,14 @@ export class BookingHouseComponent implements OnInit {
   }
 
   submit() {
-    console.log('form',this.form.value);
+    const data = this.form.value;
+    data.appUser = this.currentUser;
+    data.house = this.house;
+    data.houseInformation = JSON.stringify(this.house);
+    console.log('data', data);
+    this.orderService.createOder(data).subscribe(()=>{
+      console.log('success');
+      
+    })
   }
 }

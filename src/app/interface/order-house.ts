@@ -6,4 +6,7 @@ export interface OrderHouse {
   house?: House;
   checkin: Date;
   checkout: Date;
+  email: string;
+  phoneNumber:string;
+  houseInformation:string;
 }
