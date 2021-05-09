@@ -156,9 +156,9 @@
           <h3 class="desc-headline">Comment</h3>
 
           <div class="listing-item" *ngFor="let c of listCmt">
-            {{c.appUser.fullName}}:
+            {{c?.appUser?.fullName}}:
             <br>
-            -{{c.comment}}
+            -{{c?.comment}}
           </div>
           <div>
             <textarea type="text" name="name" class="form-control mb-2 mr-sm-2" style="border-radius: 30px"

@@ -14,6 +14,9 @@ import {OderService} from '../../service/oder.service';
   styleUrls: ['./house-detail.component.css']
 })
 export class HouseDetailComponent implements OnInit {
+  rate={star: null};
+  comment={comment: null};
+  listCmt: any[] = [];
   sub: Subscription | undefined;
   // @ts-ignore
   order: OrderHouse;
@@ -81,6 +84,16 @@ export class HouseDetailComponent implements OnInit {
       this.photos = photos;
     });
   }
+  
+  create(number: any){
+  }
+
+  createRate(number: any){
+  }
+
+  createRateHouse(){}
+
+  createCommentHouse(){}
 
   createOrderHouse(): void {
     this.orderHouseService.createOder(this.order, this.id).subscribe(() => {
