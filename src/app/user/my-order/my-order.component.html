@@ -1,8 +1,6 @@
-<!-- Wrapper -->
 <div id="wrapper">
 
-<app-header></app-header>
-
+  <app-header></app-header>
 
   <!-- Titlebar
   ================================================== -->
@@ -11,13 +9,13 @@
       <div class="row">
         <div class="col-md-12">
 
-          <h2>Change Password</h2>
+          <h2>My Properties</h2>
 
           <!-- Breadcrumbs -->
           <nav id="breadcrumbs">
             <ul>
               <li><a href="#">Home</a></li>
-              <li>Change Password</li>
+              <li>My Properties</li>
             </ul>
           </nav>
 
@@ -31,35 +29,34 @@
   ================================================== -->
   <div class="container">
     <div class="row">
+
+
       <!-- Widget -->
       <app-acc-nav></app-acc-nav>
-      <form name="form" class="form-group" (ngSubmit)="f.form.valid && resetPassword(user.id)" #f="ngForm" novalidate>
+
       <div class="col-md-8">
-        <div class="row">
-          <div class="col-md-6  my-profile">
-            <h4 class="margin-top-0 margin-bottom-30">Change Password</h4>
-
-
-            <label>New Password</label>
-            <input name="password" type="password" class="form-control"
-                   [(ngModel)]="user.password" #password="ngModel" required="required" minlength="6">
-            <div *ngIf="f.submitted && password.invalid">
-              <div *ngIf="password.errors?.required" class="text-danger">Vui lòng nhập mật khẩu </div>
-              <div *ngIf="password.errors?.minlength" class="text-danger">Vui lòng nhập mật khẩu trên 6 kí tự</div>
-            </div>
-
-            <button class="btn btn-outline-success" type="submit" >Cập nhật</button>
-          </div>
-
-          <div class="col-md-6">
-            <div class="notification notice">
-              <p>Your password should be at least 6 random characters long to be safe</p>
-            </div>
-          </div>
-
-        </div>
+        <table class="manage-table responsive-table">
+          <tr>
+            <th><i class="fa fa-file-text"></i>Host</th>
+            <th><i class="fa fa-calendar"></i> Checkin</th>
+            <th><i class="fa fa-calendar"></i> Checkout</th>
+            <th></th>
+          </tr>
+          <!-- Item #1 -->
+          <tr *ngFor="let o of listOrder">
+            <td>
+              {{o.house?.appUser?.fullName}}
+            </td>
+            <td>
+              {{o.checkin | date: 'dd/MM/yyyy'}}
+            </td>
+            <td>
+              {{o.checkout | date: 'dd/MM/yyyy'}}
+            </td>
+          </tr>
+        </table>
       </div>
-</form>
+
     </div>
   </div>
 
@@ -68,14 +65,15 @@
   ================================================== -->
   <div class="margin-top-55"></div>
 
-  <div id="footer">
+  <div id="footer" class="sticky-footer">
     <!-- Main -->
     <div class="container">
       <div class="row">
         <div class="col-md-5 col-sm-6">
-          <img class="footer-logo" src="images/logo.png" alt="">
+          <img class="footer-logo" src="assets/images/logo.png" alt="">
           <br><br>
-          <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+          <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia
+            tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
         </div>
 
         <div class="col-md-4 col-sm-6 ">
@@ -135,4 +133,6 @@
   <div id="backtotop"><a href="#"></a></div>
 </div>
 <!-- Wrapper / End -->
+
+
 

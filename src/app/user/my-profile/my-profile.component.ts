@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {UserService} from '../../service/user.service';
 import {User} from '../../interface/user';
 
@@ -27,26 +27,18 @@ export class MyProfileComponent implements OnInit {
     }
   };
 
-
   constructor(private router: Router,
-              private userService: UserService,
-              private activatedRouter: ActivatedRoute,
-  ) {
-    this.sub = this.activatedRouter.paramMap.subscribe((paraMap: ParamMap) => {
-        this.user.id = Number(paraMap.get('id'));
-        this.getUserById(this.user.id);
-      }
-    );
+              private userService: UserService) {
+    this.getCurrentUser();
   }
 
   ngOnInit(): void {
 
   }
 
-  // tslint:disable-next-line:typedef
-  private getUserById(id: number) {
-    this.userService.getUserById(id).subscribe(a => {
-      this.user = a;
+  getCurrentUser(): void {
+    this.userService.getCurrentUser().subscribe(user => {
+      this.user = user;
     });
   }
 
